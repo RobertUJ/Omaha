@@ -8,7 +8,6 @@ from django.template import RequestContext
 from omaha.users.forms import LoginForm
 
 
-
 def login_view(request):
 	form = LoginForm()
 	ctx = {'form':form}
