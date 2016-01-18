@@ -4,8 +4,14 @@ from django.views.generic.base import View
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-from projects.models import MainProject
+from projects.forms import MainProject
 
+def IndexView(request):
+    form = MainProject()
+    ctx = {'project_name': form}
+    render_to_response('index.html', ctx, context_instance=RequestContext(request))
+
+from projects.models import MainProject
 class IndexView(View):
     template_name = "index.html"
 
