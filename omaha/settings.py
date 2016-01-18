@@ -24,6 +24,7 @@ SECRET_KEY = 'k2h&1!@2pip_6rlyyxmyd2(x6fu_%w_ta0p8^i@^!)-#ssm+(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+LOCAL = False
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Our apps
+    'projects',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,12 +59,16 @@ ROOT_URLCONF = 'omaha.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR,'templates'),
+            os.path.join(BASE_DIR,'omaha/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -76,8 +84,10 @@ WSGI_APPLICATION = 'omaha.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'omaha',
+        'USER': 'root',
+        'PASSWORD': 'ventamovil'
     }
 }
 
@@ -100,3 +110,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if LOCAL:
+    try:
+        from local_settings import *
+    except Exception, e:
+        raise e
