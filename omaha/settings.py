@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from _symtable import LOCAL
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k2h&1!@2pip_6rlyyxmyd2(x6fu_%w_ta0p8^i@^!)-#ssm+(+'
+SECRET_KEY = '=8t$@6645h!mpevbd5+zlbv#w&cfhxv7285sa27vj_#&ojcci&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +39,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
 
     #Our apps
     'projects',
+=======
+    'login',
+    'projects'
+>>>>>>> 08e6daf952d94e00aac05a7072854cc29a5725a0
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,9 +116,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 
 if LOCAL:
     try:
         from local_settings import *
     except Exception, e:
+=======
+if LOCAL:
+    try:
+        from local_settings import *
+    except Exception ,e:
+>>>>>>> 08e6daf952d94e00aac05a7072854cc29a5725a0
         raise e
