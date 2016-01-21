@@ -1,33 +1,10 @@
-{% load staticfiles %}
 <!DOCTYPE html>
-<HTML>
-<HEAD>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <TITLE>{% block title %} Bienvenidos {% endblock %}</TITLE>
-    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
-   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-</HEAD>
-<BODY>
-<section class="menu_principal">
-    <div class="header">
-        <div class="user_info">Usuario pruebas
-            {% if user.is_authenthicated %}
-            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
-            {% else %}
-            <a href="/" class="a_regresar_venta">Inicio de sesion</a>
-            {% endif%}
-        </div>
-        <div class="main_title"><h2>Administrador de proyectos</h2>
-        </div>
-         <section class="a_menu">
-            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
-            <a href="/" class="a_regresar_venta">Diseno</a>
-            <a href="/" class="a_regresar_venta">To-do</a>
-            <a href="/" class="a_regresar_venta">Tickets</a>
-        </section>
-    </div>
-</section>
-{% block content %}
-{% endblock %}
-</BODY>
-</HTML>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
