@@ -1,11 +1,80 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/index.css" %}"/>
+   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
     <title>Index</title>
 </head>
 <body>
-   {{ form }}
-    <p>este es mi Index.html</p>
+
+<!-- *******************************************Menu principal ***************************** -->
+<section class="menu_principal">
+    <div class="header">
+        <div class="user_info">Usuario pruebas
+            {% if user.is_authenthicated %}
+            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
+            {% else %}
+            <a href="/" class="a_regresar_venta">Inicio de sesion</a>
+            {% endif%}
+        </div>
+        <div class="main_title"><h2>Administrador de proyectos</h2>
+        </div>
+         <section class="a_menu">
+            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
+            <a href="/" class="a_regresar_venta">Diseno</a>
+            <a href="/" class="a_regresar_venta">To-do</a>
+            <a href="/" class="a_regresar_venta">Tickets</a>
+        </section>
+    </div>
+</section>
+
+<!-- *********************************Menu proyectos**********************************-->
+
+<section class="menu_proyectos">
+    <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
+    <a class="a_ver_proyectos" href="{% url "addProjectView" %}">Ver proyecto</a>
+</section>
+
+
+<!-- *******************************************Menu principal ***************************** -->
+
+<section class="proyectos_resumen">
+    <div id="container">
+        <div id="row">
+  	        <div id="left">
+                    <h4>Nombre:</h4>
+  		            <h4>Fecha de incicio:</h4>
+                    <h4>Fecha final:</h4>
+                    <h4>URL:</h4>
+                    <h4>Dominio:</h4>
+                    <h4>Servidor asignado:</h4>
+                    <h4>Tipo:</h4>
+                    <h4>Cliente:</h4>
+                    <h4>Plataforma:</h4>
+                    <h4>Prioridad:</h4>
+                    <h4>Usuarios:</h4>
+  	        </div>
+    {% for project in project %}
+            <div id="right">
+    	            <h4>{{ project.name }}</h4>
+                    <h4>{{ project.start_date }}</h4>
+                    <h4>{{ project.end_date }}</h4>
+                    <h4>{{ project.url }}</h4>
+                    <h4>{{ project.domain }}</h4>
+                    <h4>{{ project.server_assigned }}</h4>
+                    <h4>{{ project.type }}</h4>
+                    <h4>{{ project.client }}</h4>
+                    <h4>{{ project.platform }}</h4>
+                    <h4>{{ project.priority }}</h4>
+                    <h4>{{ project.users }}</h4>
+  	        </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</section>
 </body>
 </html>

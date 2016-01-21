@@ -1,8 +1,26 @@
-from django import forms
+from django.forms import ModelForm, TextInput
+from django.forms.widgets import EmailInput, NumberInput, URLInput, DateInput
+
+from projects.models import MainProject
 
 
-class MainProject(forms.Form):
-    project_name = forms.CharField(widget=forms.TextInput)
+class addProjectForm(ModelForm):
+    class Meta:
+        model = MainProject
+        widgets = {
+            'name':TextInput(attrs={'placeholder':'Nombre proyecto*', 'class':"inputs_proyect"}),
+            'start_date':DateInput(attrs={'placeholder':'Fecha inicial'}),
+            'end_date':DateInput(attrs={'placeholder':'Fecha final*'}),
+            'url':URLInput(attrs={'placeholder':'URL*'}),
+            'domain':TextInput(attrs={'placeholder':'Dominio*'}),
+            'server_assigned':TextInput(attrs={'placeholder':'Servidor asignado*'}),
+            'type':TextInput(attrs={'placeholder':'Tipo*'}),
+            'client':TextInput(attrs={'placeholder':'Cliente*'}),
+            'platform':TextInput(attrs={'placeholder':'Plataforma*'}),
+            'priority':NumberInput(attrs={'placeholder':'Prioridad*'}),
+            'users':TextInput(attrs={'placeholder':'usuarios*'})
+        }
+        fields = '__all__'
 
-    def __unicode__(self):
-        return "%s" % self.project_name
+   # def __unicode__(self):
+   #     return "%s" % self.project_name

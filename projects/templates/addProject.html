@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+
+<section class="menu_proyectos">
+        <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
+        <a class="a_ver_proyectos" href="{% url "IndexView" %}">Ver proyecto</a>
+    </section>
+<form method="POST" action="">
+<div id="container">
+  <div id="row">
+
+  	<div id="left">
+  		<h4>Nombre:</h4>
+  		<h4>Fecha de incicio:</h4>
+        <h4>Fecha final:</h4>
+        <h4>URL:</h4>
+        <h4>Dominio:</h4>
+        <h4>Servidor asignado:</h4>
+        <h4>Tipo:</h4>
+        <h4>Cliente:</h4>
+        <h4>Plataforma:</h4>
+        <h4>Prioridad:</h4>
+        <h4>Usuarios:</h4>
+  	</div>
+
+{#  	<div id="right">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#  	</div>#}
+
+      <div id="right">
+        {% csrf_token %}
+        <p>{{ form.name }}</p>
+        <p>{{ form.start_date }}</p>
+        <p>{{ form.end_date }}</p>
+        <p>{{ form.url }}</p>
+        <p>{{ form.domain }}</p>
+        <p>{{ form.server_assigned }}</p>
+        <p>{{ form.type }}</p>
+        <p>{{ form.client }}</p>
+        <p>{{ form.platform }}</p>
+        <p>{{ form.priority }}</p>
+        <p>{{ form.users }}</p>
+          {{ form.errors }}
+  	</div>
+   </div>
+</div>
+<input class="btnAgregar" type="submit" value="Agregar proyecto">
+</form>
+
+</body>
+{% endblock%}
