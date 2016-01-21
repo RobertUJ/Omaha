@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
+from .views import LoginView
 
-urlpatterns = patterns('login.views',
-                       url(r'^$','login_view',name='inicio de sesion'),
-                       )
+urlpatterns = [
+    url(r'^inicio_de_sesion/', LoginView.as_view(), name='login.view.url'),
+]

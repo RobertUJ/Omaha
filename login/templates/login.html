@@ -1,17 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<form action=".", method="POST">
-    <head>
-    <title>Inicio de sesion</title>
-        <meta charset="UTF-8">
-        {% csrf_token %}
-        {{ mensaje }}
-        {{ form.as_p }}
-        <input type="submit" value="Login">
-</head>
+{% extends 'base.html' %}
+{% block title %}Inicio de sesion{% endblock title %}
+{% block content %}
+<div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="page-header"><h2>Login</h2></div>
+            {% if mensaje %}
+                <div class="alert alert-danger">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
 
-</form>
-<body>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="username">Nombre de usuario</label>
+                    <input type="text" id="username" name="username" class="form-control" value="{{ username }}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
 
-</body>
-</html>
+{% endblock %}
