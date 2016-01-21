@@ -36,14 +36,14 @@ class LoginView(TemplateView):
                 if user is not None:
                     if user.is_active:
                         login(request,user)
-                        #return redirect(reverse('accounts.index'))
+                        return redirect(reverse('index'))
                         mensaje = "Te has identificado de modo correcto"
                     else:
                         mensaje = "Tu usuario esta inactivo"
                 else:
                     mensaje = "Nombre y/o password incorrectos"
 
-        form = LoginForm()
+        form = LoginForm(request.POST)
         ctx = {'form':form,'mensaje':mensaje}
         return render(request,self.template_name,ctx)
 
