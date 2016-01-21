@@ -25,11 +25,16 @@ INSTALLED_APPS = (
 
     #Our apps
     'login',
+<<<<<<< HEAD
     'projects'
 <<<<<<< HEAD
 =======
 >>>>>>> 08e6daf952d94e00aac05a7072854cc29a5725a0
 >>>>>>> 7125d6b40bc7986e6e6b750b19bd01eb326a8371
+=======
+    'projects',
+    'accounts',
+>>>>>>> 8298d3d93b2ae6d764a866e5be3d976cdbea3643
 )
 
 MIDDLEWARE_CLASSES = (
