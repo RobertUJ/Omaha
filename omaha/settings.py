@@ -18,23 +18,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 7125d6b40bc7986e6e6b750b19bd01eb326a8371
-
     #Our apps
     'login',
-<<<<<<< HEAD
-    'projects'
-<<<<<<< HEAD
-=======
->>>>>>> 08e6daf952d94e00aac05a7072854cc29a5725a0
->>>>>>> 7125d6b40bc7986e6e6b750b19bd01eb326a8371
-=======
     'projects',
     'accounts',
->>>>>>> 8298d3d93b2ae6d764a866e5be3d976cdbea3643
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,10 +80,6 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 7125d6b40bc7986e6e6b750b19bd01eb326a8371
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
 MEDIA_URL = '/static/media/'
@@ -108,14 +91,11 @@ if LOCAL:
     try:
         from local_settings import *
     except Exception, e:
-<<<<<<< HEAD
-                e
-=======
-=======
+        e
+
 if LOCAL:
     try:
         from local_settings import *
     except Exception ,e:
->>>>>>> 08e6daf952d94e00aac05a7072854cc29a5725a0
         raise e
->>>>>>> 7125d6b40bc7986e6e6b750b19bd01eb326a8371
+

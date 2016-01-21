@@ -10,6 +10,8 @@ from login.forms import LoginForm
 
 from django.views.generic import TemplateView
 
+from login.models import MainUsers
+
 
 class LoginView(TemplateView):
     template_name = "login.html"
@@ -22,13 +24,15 @@ class LoginView(TemplateView):
         return  render(request,self.template_name,ctx)
 
     def post(self, request, *args, **kwargs):
+        print request.POST
         mensaje = ""
         if request.method=="POST":
             form = LoginForm(request.POST)
             if form.is_valid():
-                username = request.POST['username']
-                password = request.POST['password']
-                user = authenticate(username=username,password=password)
+                username = form.cleaned_data["username"]
+                password = form.cleaned_data["password"]
+                print username
+                user = authenticate(username=username, password=password)
                 if user is not None:
                     if user.is_active:
                         login(request,user)
@@ -38,10 +42,10 @@ class LoginView(TemplateView):
                         mensaje = "Tu usuario esta inactivo"
                 else:
                     mensaje = "Nombre y/o password incorrectos"
-        else:
-            form = LoginForm()
-            ctx = {'form':form,'mensaje':mensaje}
-            return render(request,self.template_name,ctx,context_instance=RequestContext(request))
+
+        form = LoginForm()
+        ctx = {'form':form,'mensaje':mensaje}
+        return render(request,self.template_name,ctx)
 
 class LogoutView(TemplateView):
     def get(self, request, *args, **kwargs):

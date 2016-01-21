@@ -21,6 +21,11 @@
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
+                <div class="form-group">
+                    {% if user.is_authenticated %}
+                        Hola,{{ usuario }}
+                    {% endif %}
+                </div>
             </form>
         </div>
     </div>

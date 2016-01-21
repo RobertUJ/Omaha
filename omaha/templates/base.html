@@ -1,59 +1,33 @@
-<!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-=======
 {% load staticfiles %}
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <meta charset="UTF-8">
+    <TITLE>{% block title %} Bienvenidos {% endblock %}</TITLE>
+    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+</HEAD>
+<BODY>
+<section class="menu_principal">
+    <div class="header">
+        <div class="user_info">Usuario pruebas
+            {% if user.is_authenthicated %}
+            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
+            {% else %}
+            <a href="/" class="a_regresar_venta">Inicio de sesion</a>
+            {% endif%}
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-              {% if user.is_authenticated %}
-              {% else %}
-                <li><a href="{% url 'accounts.register' %}">Registro</a></li>
-              {% endif %}
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-        {% block content %}{% endblock content %}
-    </div><!-- /.container -->
-
-    <script src="{% static 'jquery/jquery.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
->>>>>>> 8298d3d93b2ae6d764a866e5be3d976cdbea3643
-</body>
-</html>
+        <div class="main_title"><h2>Administrador de proyectos</h2>
+        </div>
+         <section class="a_menu">
+            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
+            <a href="/" class="a_regresar_venta">Diseno</a>
+            <a href="/" class="a_regresar_venta">To-do</a>
+            <a href="/" class="a_regresar_venta">Tickets</a>
+        </section>
+    </div>
+</section>
+{% block content %}
+{% endblock %}
+</BODY>
+</HTML>
