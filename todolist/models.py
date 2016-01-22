@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db import models
 
 class todolistmodel(models.Model):
@@ -12,3 +13,10 @@ class todolistmodel(models.Model):
 
     def __unicode__(self):
         return "%s" % self.name
+=======
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464

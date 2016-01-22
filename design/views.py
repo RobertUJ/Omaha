@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from django.views.generic.base import View
 from design.models import DesignModelRequest, DesignModelResponse
 from design.forms import DesignFormRequest, DesignFormResponse
@@ -55,3 +56,7 @@ class DesignResponseView(View):
             else:
                 # print form.e
                 return render(request,self.template_name,data)
+=======
+
+# Create your views here.
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464

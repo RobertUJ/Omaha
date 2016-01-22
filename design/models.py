@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db import models
 
 def url(filename):
@@ -30,3 +31,10 @@ class DesignModelResponse(models.Model):
 
     def __unicode__(self):
         return "%s" % self.assignment
+=======
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464

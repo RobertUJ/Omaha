@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from django.views.generic.base import View
 from todolist.models import todolistmodel
 from todolist.forms import todolistform
@@ -42,3 +43,7 @@ class addTaskView(View):
                 return render(request,self.template_name,data)
             else:
                 return render(request,self.template_name,data)
+=======
+
+# Create your views here.
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
