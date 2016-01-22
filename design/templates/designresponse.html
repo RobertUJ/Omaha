@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+
+<!-- *******************************************MENU PRINCIPAL***************************** -->
+    <section class="menu_proyectos">
+    <a class="a_agregar_proyectos" href="{% url "DesignView" %}">Volver a diseno</a>
+</section>
+<!-- *******************************************FORMULARIO ***************************** -->
+
+
+<form method="POST" action="">
+    <div id="container">
+  <div id="row">
+
+  	<div id="left">
+  		<h4>Disenador asignado:</h4>
+        <h4>Usuario peticion:</h4>
+  		<h4>Peticion:</h4>
+        <h4>Archivos:</h4>
+        <h4>Plataforma:</h4>
+        <h4>Tipo:</h4>
+        <h4>comentario:</h4>
+  	</div>
+
+      <div id="right">
+        {% csrf_token %}
+        <p>{{ form.designer_assigned }}</p>
+        <p>{{ form.user_assigner }}</p>
+        <p>{{ form.assignment }}</p>
+        <p>{{ form.files}}</p>
+        <p>{{ form.platform}}</p>
+        <p>{{ form.type }}</p>
+        <p>{{ form.coment }}</p>
+          {{ form.errors }}
+  	</div>
+   </div>
+</div>
+<input class="btnAgregar" type="submit" value="Agregar proyecto">
+</form>
+
+</body>
+{% endblock%}
+
+
+{% block contenido %}
+    Respuesta de diseno
+{% endblock %}

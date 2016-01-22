@@ -1,46 +1,13 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/index.css" %}"/>
-   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-    <title>Index</title>
-</head>
-<body>
-
-<!-- *******************************************Menu principal ***************************** -->
-<section class="menu_principal">
-    <div class="header">
-        <div class="user_info">Usuario pruebas
-            {% if user.is_authenthicated %}
-            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
-            {% else %}
-            <a href="/" class="a_regresar_venta">Inicio de sesion</a>
-            {% endif%}
-        </div>
-        <div class="main_title"><h2>Administrador de proyectos</h2>
-        </div>
-         <section class="a_menu">
-            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
-            <a href="/" class="a_regresar_venta">Diseno</a>
-            <a href="/" class="a_regresar_venta">To-do</a>
-            <a href="/" class="a_regresar_venta">Tickets</a>
-        </section>
-    </div>
-</section>
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
 
 <!-- *********************************Menu proyectos**********************************-->
-
 <section class="menu_proyectos">
     <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
-    <a class="a_ver_proyectos" href="{% url "addProjectView" %}">Ver proyecto</a>
 </section>
-
-
 <!-- *******************************************Menu principal ***************************** -->
-
 <section class="proyectos_resumen">
     <div id="container">
         <div id="row">
@@ -77,4 +44,8 @@
     {% endfor %}
 </section>
 </body>
-</html>
+{% endblock %}
+
+{% block contenido %}
+    Indice de proyectos
+{% endblock %}
