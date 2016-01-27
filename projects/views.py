@@ -1,9 +1,7 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render
 from django.views.generic.base import View
 from projects.forms import addProjectForm
 from projects.models import MainProject
-from django.template import RequestContext
 
 
 class IndexView(View):
@@ -13,8 +11,7 @@ class IndexView(View):
         project = MainProject.objects.all()
         data = {
             'project': project,
-        }
-        print project
+        } 
         return render(request, self.template_name, data)
 
 

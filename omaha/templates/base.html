@@ -9,23 +9,28 @@
 </HEAD>
 <BODY>
 <section class="menu_principal">
-    <div class="header">
-        <div class="user_info">Usuario pruebas
+        <div class="user_info">
+            <h2>Usuario pruebas</h2>
             {% if user.is_authenthicated %}
-            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
+                 <a href="/logout/" class="a_regresar_venta">Cerrar sesion</a>
             {% else %}
-            <a href="/" class="a_regresar_venta">Inicio de sesion</a>
+                <a href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a>
             {% endif%}
         </div>
-        <div class="main_title"><h2>Administrador de proyectos</h2>
+        <div class="main_title">
+            <h2><div class="page_title">{% block contenido %}  {% endblock %}</div></h2>
         </div>
-         <section class="a_menu">
-            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
-            <a href="/" class="a_regresar_venta">Diseno</a>
-            <a href="/" class="a_regresar_venta">To-do</a>
-            <a href="/" class="a_regresar_venta">Tickets</a>
-        </section>
-    </div>
+         <div class="a_menu">
+            <ul>
+                <li><a href="/index/" >Proyectos</a></li>
+                <li><a href="/design/" >Diseno</a></li>
+                <li><a href="/todolist/">To-Do</a></li>
+                <li><a href="/tickets/" >Tickets</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/perfil/" >Mi perfil</a></li>
+                {% endif %}
+            </ul>
+        </div>
 </section>
 {% block content %}
 {% endblock %}

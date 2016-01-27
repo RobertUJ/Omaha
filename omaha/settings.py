@@ -22,6 +22,8 @@ INSTALLED_APPS = (
     'login',
     'projects',
     'accounts',
+    'todolist',
+    'design',
 )
 
 MIDDLEWARE_CLASSES = (
