@@ -11,7 +11,6 @@ from login.forms import LoginForm
 
 from django.views.generic import TemplateView, FormView
 
-from login.models import MainUsers
 
 
 class LoginView(FormView):

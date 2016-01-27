@@ -12,7 +12,7 @@ urlpatterns = [
 
     url(r'^', include('projects.urls')),
     url(r'^', include('login.urls')),
-    url(r'^accounts/',include("accounts.urls"))
+    url(r'^',include("accounts.urls")),
 ]
 
 if settings.LOCAL:
