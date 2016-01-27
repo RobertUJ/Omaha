@@ -5,16 +5,33 @@
 
 <!-- *******************************************MENU PRINCIPAL***************************** -->
     <section class="menu_proyectos">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
     <a class="a_agregar_proyectos" href="{% url "DesignView" %}">Volver a diseno</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
 
+<<<<<<< HEAD
+=======
+=======
+    <a class="a_agregar_proyectos" href="{% url "TodoListView" %}">Voler a tareas</a>
+</section>
+<!-- *******************************************FORMULARIO ***************************** -->
+
+{% block contenido %}
+    Peticion de diseno
+{% endblock %}
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 
 <form method="POST" action="">
     <div id="container">
   <div id="row">
 
   	<div id="left">
+<<<<<<< HEAD
   		<p>Disenador asignado:</p>
         <p>{{ form.designer_assigned }}</p>
         <p>Usuario peticion:</p>
@@ -36,14 +53,67 @@
 {#          {{ form.errors }}#}
 {#  	</div>#}
 {#   </div>#}
+=======
+<<<<<<< HEAD
+  		<h4>Disenador asignado:</h4>
+        <h4>Usuario peticion:</h4>
+  		<h4>Peticion:</h4>
+        <h4>Archivos:</h4>
+        <h4>Plataforma:</h4>
+        <h4>Tipo:</h4>
+=======
+  		<h4>Usuario peticion:</h4>
+        <h4>Peticion:</h4>
+        <h4>Plataforma:</h4>
+        <h4>Tipo:</h4>
+  		<h4>Fecha de peticion:</h4>
+        <h4>Fecha tentativa:</h4>
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+        <h4>comentario:</h4>
+  	</div>
+
+      <div id="right">
+        {% csrf_token %}
+<<<<<<< HEAD
+        <p>{{ form.designer_assigned }}</p>
+        <p>{{ form.user_assigner }}</p>
+        <p>{{ form.assignment }}</p>
+        <p>{{ form.files}}</p>
+        <p>{{ form.platform}}</p>
+        <p>{{ form.type }}</p>
+        <p>{{ form.coment }}</p>
+=======
+        <p>{{ form.user_assigner }}</p>
+        <p>{{ form.assignment }}</p>
+        <p>{{ form.platform }}</p>
+        <p>{{ form.type }}</p>
+        <p>{{ form.asked_date }}</p>
+        <p>{{ form.tentative_date }}</p>
+        <p>{{ form.comment }}</p>
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+          {{ form.errors }}
+  	</div>
+   </div>
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 </div>
 <input class="btnAgregar" type="submit" value="Agregar proyecto">
 </form>
 
 </body>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 {% endblock%}
 
 
 {% block contenido %}
     Respuesta de diseno
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock %}
+=======
+{% endblock%}
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b

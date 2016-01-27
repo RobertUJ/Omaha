@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Agregar un proyecto nuevo {% endblock %}
@@ -14,6 +18,7 @@
 <div id="container">
 <div id="row">
     <div id="left">
+<<<<<<< HEAD
         <p>Nombre:</p>
         <p>Tarea:</p>
         <p>Fecha de incicio:</p>
@@ -22,6 +27,16 @@
         <p>Usuario peticion:</p>
         <p>Plataforma:</p>
         <p>Prioridad:</p>
+=======
+        <h4>Nombre:</h4>
+        <h4>Tarea:</h4>
+        <h4>Fecha de incicio:</h4>
+        <h4>Fecha final:</h4>
+        <h4>Usuario asignado:</h4>
+        <h4>Usuario peticion:</h4>
+        <h4>Plataforma:</h4>
+        <h4>Prioridad:</h4>
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
     </div>
         {% csrf_token %}
     {% for specifictask in specifictask %}
@@ -36,12 +51,98 @@
             <p>{{ specifictask.priority}}</p>
         </div>
     {% endfor %}
+<<<<<<< HEAD
+=======
+=======
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/index.css" %}"/>
+   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <title>Index</title>
+</head>
+<body>
+
+<!-- *******************************************Menu principal ***************************** -->
+<section class="menu_principal">
+    <div class="header">
+        <div class="user_info">Usuario pruebas
+            {% if user.is_authenthicated %}
+            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
+            {% else %}
+            <a href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a>
+            {% endif%}
+        </div>
+        <div class="main_title"><h2>Administrador de proyectos</h2>
+        </div>
+         <section class="a_menu">
+            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
+            <a href="/" class="a_regresar_venta">Diseno</a>
+            <a href="/" class="a_regresar_venta">To-do</a>
+            <a href="/" class="a_regresar_venta">Tickets</a>
+        </section>
+    </div>
+</section>
+
+<!-- *********************************Menu proyectos**********************************-->
+
+<section class="menu_proyectos">
+    <a class="a_agregar_proyectos">Agregar proyecto</a>
+    <a class="a_ver_proyectos" >Ver proyecto</a>
+</section>
+
+
+<!-- *******************************************Menu principal ***************************** -->
+<h1>TODO LIST</h1>
+{% csrf_token %}
+<div id="container">
+    <div id="row">
+        <div id="left">
+            <h4>Nombre:</h4>
+            <h4>Tarea:</h4>
+            <h4>Fecha de incicio:</h4>
+            <h4>Fecha final:</h4>
+            <h4>Usuario asignado:</h4>
+            <h4>Servidor asignado:</h4>
+            <h4>Plataforma:</h4>
+            <h4>Prioridad:</h4>
+        </div>
+        <div id="right">
+            {% csrf_token %}
+            {% for task in tasks %}
+                <p>Nombre: {{ task.name }}</p>
+                <p>Tarea: {{ task.task }}</p>
+                <p>Fecha inicio: {{ task.start_date }}</p>
+                <p>Fecha final: {{ task.end_date }}</p>
+                <p>Usuario asignado: {{ task.user_assigned }}</p>
+                <p>Servidor asignado:{{ task.server_assigned }}</p>
+                <p>Plataforma: {{ task.platform}}</p>
+                <p>Prioridad: {{ task.priority}}</p>
+            {% endfor %}
+
+        </div>
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
     </div>
 </div>
 
 </body>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 {% endblock%}
 
 {% block contenido %}
     Agregar una nueva tarea
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock %}
+=======
+</html>
+>>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b

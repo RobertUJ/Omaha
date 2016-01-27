@@ -10,7 +10,11 @@ class DesignFormRequest(ModelForm):
         model = DesignModelRequest
         widgets = {
             'user_assigner':TextInput(attrs={'placeholder':'Usuario peticion'}),
+<<<<<<< HEAD
             'assignment':TextInput(attrs={'placeholder':'Tarea'}),
+=======
+            'assignment':Textarea(attrs={'placeholder':'Tarea'}),
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
             'platform':TextInput(attrs={'placeholder':'Plataforma'}),
             'type':TextInput(attrs={'placeholder':'Tipo'}),
             'asked_date':DateInput(attrs={'placeholder':'Fecha peticion'}),

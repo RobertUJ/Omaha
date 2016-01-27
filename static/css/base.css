@@ -8,10 +8,18 @@ img { border: none; }
   width: 95%;
   margin: 0 auto;
 }
+<<<<<<< HEAD
 
 
 .user_info, .main_title, .a_menu{
 	border: 2px solid #777;
+=======
+.menu_principal{
+    width: 100%;
+    margin: 0px auto;
+    box-sizing: border-box;
+    background-color: #0A6300;
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 }
 
 .user_info{
@@ -30,27 +38,98 @@ img { border: none; }
     height:100px;
 }
 .main_title h2{
+<<<<<<< HEAD
     margin-top: 30px;
     text-align: center;
 }
 .a_menu{
     height: 30px;
+=======
+    text-transform: uppercase;
+    height: 20px;
+    font-size: 20px;
+    margin-top: 0px;
+    color: #FFF;
+    padding-left: 2em;
+    font-family: Roboto;
+    text-align: center;
+}
+.a_menu {
+    height: 20px;
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 }
 .a_menu li{
     display: inline;
 }
 .a_menu a{
     text-decoration: none;
+<<<<<<< HEAD
     color: black;
     font-weight: bold;
     padding: 8px;
+=======
+    text-transform: uppercase;
+    margin-left: 14%;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0.5em;
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 }
 .a_menu a:hover{
     background-color: gray;
+<<<<<<< HEAD
     color: white;
 }
 #container {
         display: table;
+=======
+}
+.page_title{
+    padding: 0.5%;
+    background-color: gray;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: Roboto;
+}
+.menu_proyectos{
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+}
+
+.a_agregar_proyectos{
+    text-decoration: none;
+    background-color: #C37F00;
+    padding: 0.7em;
+    color: white;
+}
+
+.a_ver_proyectos{
+    text-decoration: none;
+    background-color: #C37F00;
+    padding: 0.7em;
+    margin-left: 1.25em;
+    color: white;
+}
+
+
+.menu_proyectos a:hover{
+    background-color: gray;
+}
+
+#proyectos_resumen{
+    background-color: aqua;
+        /*padding-right: 50px;*/
+}
+
+
+#container {
+        display: table;
+        box-shadow: 0px 0px 3px 3px  black;
+        padding-right: 40px;
+        margin-left:5%
+>>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
     }
 
 #row  {
