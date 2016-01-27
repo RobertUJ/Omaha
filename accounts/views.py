@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
+from django.views.generic import FormView
+from accounts.forms import RegisterForm
 
-# Create your views here.
-from accounts.forms import RegistroUserForm
+
+class RegisterView(FormView):
+    template_name = "register.html"
 
 
-def registro_usuario_view(request):
-    if request.method == 'POST':
-        form = RegistroUserForm(request.POST, request.FILES)
-    else:
-        form = RegistroUserForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/register.html', context)
+    def get(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST)
+        ctx = {
+            'form': form
+        }
+        return render(request, self.template_name, ctx)
+
+    def post(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST, request.FILES)
+        ctx = {
+             'form': form,
+        }
+        if form.is_valid():
+            form.save()
+            return render(request,self.template_name,ctx)
+        else:
+            # print form.e
+            return render(request,self.template_name,ctx)
