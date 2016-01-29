@@ -1,4 +1,3 @@
-
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
@@ -13,7 +12,8 @@ urlpatterns = [
     url(r'^', include('login.urls')),
     url(r'^', include('todolist.urls')),
     url(r'^', include('design.urls')),
-    url(r'^accounts/',include("accounts.urls"))
+    url(r'^', include("accounts.urls")),
+    # url(r'^accounts/',include("accounts.urls")),
 ]
 
 if settings.LOCAL:

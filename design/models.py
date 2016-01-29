@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
+
 from django.db import models
 
 def url(filename):
@@ -22,8 +19,6 @@ class DesignModelRequest(models.Model):
 
 
 class DesignModelResponse(models.Model):
-
-
     designer_assigned = models.CharField(max_length=100)
     user_assigner = models.CharField(max_length=100)
     assignment = models.CharField(max_length=100)
@@ -34,13 +29,4 @@ class DesignModelResponse(models.Model):
 
     def __unicode__(self):
         return "%s" % self.assignment
-<<<<<<< HEAD
-=======
-=======
-from __future__ import unicode_literals
 
-from django.db import models
-
-# Create your models here.
->>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b

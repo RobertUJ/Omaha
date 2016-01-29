@@ -8,41 +8,26 @@
     <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
 </section>
 <!-- *******************************************Menu principal ***************************** -->
-<section class="proyectos_resumen">
-    <div id="container">
-        <div id="row">
-  	        <div id="left">
-                    <p>Nombre:</p>
-  		            <p>Fecha de incicio:</p>
-                    <p>Fecha final:</p>
-                    <p>URL:</p>
-                    <p>Dominio:</p>
-                    <p>Servidor asignado:</p>
-                    <p>Tipo:</p>
-                    <p>Cliente:</p>
-                    <p>Plataforma:</p>
-                    <p>Prioridad:</p>
-                    <p>Usuarios:</p>
-  	        </div>
-        {% csrf_token %}
-    {% for project in project %}
-            <div id="right">
-    	            <p>{{ project.name }}</p>
-                    <p>{{ project.start_date }}</p>
-                    <p>{{ project.end_date }}</p>
-                    <p>{{ project.url }}</p>
-                    <p>{{ project.domain }}</p>
-                    <p>{{ project.server_assigned }}</p>
-                    <p>{{ project.type }}</p>
-                    <p>{{ project.client }}</p>
-                    <p>{{ project.platform }}</p>
-                    <p>{{ project.priority }}</p>
-                    <p>{{ project.users }}</p>
-  	        </div>
-        {% endfor %}
-        </div>
-    </div>
-</section>
+    <br>
+{% csrf_token %}
+<table border="0">
+    <thead>
+        <th>Nombre:</th>
+        <th>Plataforma:</th>
+        <th>Usuarios:</th>
+        <th>Ver proyecto:</th>
+</thead>
+<tbody>
+   {% for project in project %}
+    <tr>
+        <td>{{ project.name }}</td>
+        <td>{{ project.platform }}</td>
+        <td>{{ project.users }}</td>
+        <td><a href="/viewProject/{{project.id}}">Ver</a> </td>
+    </tr>
+</tbody>
+    {% endfor %}
+    </table>
 </body>
 {% endblock %}
 

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Agregar un proyecto nuevo {% endblock %}
@@ -14,106 +10,27 @@
     <a class="a_agregar_proyectos" href="{% url "AddTaskView" %}">Agregar tarea</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
-
+<br>
 {% csrf_token %}
-<div id="container">
-<div id="row">
-    <div id="left">
-<<<<<<< HEAD
-        <p>Nombre:</p>
-        <p>Tarea:</p>
-        <p>Fecha de incicio:</p>
-        <p>Fecha final:</p>
-        <p>Usuario asignado:</p>
-        <p>Usuario peticion:</p>
-        <p>Plataforma:</p>
-        <p>Prioridad:</p>
-=======
-        <h4>Nombre:</h4>
-        <h4>Tarea:</h4>
-        <h4>Fecha de incicio:</h4>
-        <h4>Fecha final:</h4>
-        <h4>Usuario asignado:</h4>
-        <h4>Usuario peticion:</h4>
-        <h4>Plataforma:</h4>
-        <h4>Prioridad:</h4>
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
-    </div>
-        {% csrf_token %}
-    {% for task in tasks %}
-        <div id="right">
-            <p>{{ task.name }}</p>
-            <p>{{ task.task }}</p>
-            <p>{{ task.start_date }}</p>
-            <p>{{ task.end_date }}</p>
-            <p>{{ task.user_assigned }}</p>
-            <p>{{ task.user_assigner }}</p>
-            <p>{{ task.platform}}</p>
-            <p>{{ task.priority}}</p>
-        </div>
-    {% endfor %}
-    </div>
-</div>
+    <table border="0">
+        <thead>
+            <th>Nombre</th>
+            <th>Tarea</th>
+            <th>Ver tarea</th>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td><a href="#">Ver</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 
-</body>
 {% endblock %}
 
 {% block contenido %}
 lista de que hacer
-<<<<<<< HEAD
 {% endblock %}
-=======
-{% endblock %}
-=======
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/index.css" %}"/>
-   	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-    <title>Index</title>
-</head>
-<body>
-
-<!-- *******************************************Menu principal ***************************** -->
-<section class="menu_principal">
-    <div class="header">
-        <div class="user_info">Usuario pruebas
-            {% if user.is_authenthicated %}
-            <a href="/" class="a_regresar_venta">Cerrar sesion</a>
-            {% else %}
-            <a href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a>
-            {% endif%}
-        </div>
-        <div class="main_title"><h2>Administrador de proyectos</h2>
-        </div>
-         <section class="a_menu">
-            <a href="/recargas_programadas/" class="a_regresar_lista">Usuarios</a>
-            <a href="/" class="a_regresar_venta">Diseno</a>
-            <a href="/" class="a_regresar_venta">To-do</a>
-            <a href="/" class="a_regresar_venta">Tickets</a>
-        </section>
-    </div>
-</section>
-
-<!-- *********************************Menu proyectos**********************************-->
-
-<section class="menu_proyectos">
-    <a class="a_agregar_proyectos">Agregar proyecto</a>
-    <a class="a_ver_proyectos" >Ver proyecto</a>
-</section>
-
-
-<!-- *******************************************Menu principal ***************************** -->
-<h1>TODO LIST</h1>
-{% csrf_token %}
-{% for tasks in tasks %}
-{{ tasks.as_p }}
-{% endfor %}
-{{ tasks.errors }}
-</body>
-</html>
->>>>>>> 84bb6d606d47a31bfc3d0127ab829f743e58f464
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b

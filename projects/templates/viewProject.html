@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+
+<!-- *********************************Menu proyectos**********************************-->
+<section class="menu_proyectos">
+    <a class="a_agregar_proyectos" href="{% url "IndexView" %}">Volver a proyectos</a>
+</section>
+<!-- *******************************************Menu principal ***************************** -->
+<br>
+<section class="proyectos_resumen">
+    <div id="container">
+        <div id="row">
+  	        <div id="left">
+                    <p>Nombre:</p>
+  		            <p>Fecha de incicio:</p>
+                    <p>Fecha final:</p>
+                    <p>URL:</p>
+                    <p>Dominio:</p>
+                    <p>Servidor asignado:</p>
+                    <p>Tipo:</p>
+                    <p>Cliente:</p>
+                    <p>Plataforma:</p>
+                    <p>Prioridad:</p>
+                    <p>Usuarios:</p>
+  	        </div>
+        {% csrf_token %}
+            <div id="right">
+    	            <p>{{ project.name }}</p>
+                    <p>{{ project.start_date }}</p>
+                    <p>{{ project.end_date }}</p>
+                    <p>{{ project.url }}</p>
+                    <p>{{ project.domain }}</p>
+                    <p>{{ project.server_assigned }}</p>
+                    <p>{{ project.type }}</p>
+                    <p>{{ project.client }}</p>
+                    <p>{{ project.platform }}</p>
+                    <p>{{ project.priority }}</p>
+                    <p>{{ project.users }}</p>
+                    <p>{{ todolist.name }}</p>
+  	        </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block contenido %}
+    Indice de proyectos
+{% endblock %}

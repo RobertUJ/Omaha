@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=8t$@6645h!mpevbd5+zlbv#w&cfhxv7285sa27vj_#&ojcci&'
 
 DEBUG = True
-LOCAL = True
+LOCAL = False
 
 ALLOWED_HOSTS = []
 
@@ -95,9 +95,4 @@ if LOCAL:
     except Exception, e:
         e
 
-if LOCAL:
-    try:
-        from local_settings import *
-    except Exception ,e:
-        raise e
 

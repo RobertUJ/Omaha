@@ -10,11 +10,8 @@ class DesignFormRequest(ModelForm):
         model = DesignModelRequest
         widgets = {
             'user_assigner':TextInput(attrs={'placeholder':'Usuario peticion'}),
-<<<<<<< HEAD
             'assignment':TextInput(attrs={'placeholder':'Tarea'}),
-=======
             'assignment':Textarea(attrs={'placeholder':'Tarea'}),
->>>>>>> 6b3039ac91be53dd5ddfc7ca3e4598c0bb016f0b
             'platform':TextInput(attrs={'placeholder':'Plataforma'}),
             'type':TextInput(attrs={'placeholder':'Tipo'}),
             'asked_date':DateInput(attrs={'placeholder':'Fecha peticion'}),
@@ -26,6 +23,7 @@ class DesignFormRequest(ModelForm):
 class DesignFormResponse(ModelForm):
     class Meta:
         model = DesignModelResponse
+        fields = '__all__'
         widgets = {
             'designer_assigned':TextInput(attrs={'placeholder':'Disenador asignado'}),
             'user_assigned':Textarea(attrs={'placeholder':'Usuario peticion'}),
@@ -35,4 +33,3 @@ class DesignFormResponse(ModelForm):
             'type':DateInput(attrs={'placeholder':'Fecha tentativa'}),
             'comment':Textarea(attrs={'placeholder':'Comentario'}),
         }
-        fields = '__all__'

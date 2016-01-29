@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import View
+
 from projects.forms import addProjectForm
 from projects.models import MainProject
 
@@ -8,12 +9,25 @@ class IndexView(View):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
-        project = MainProject.objects.all()
+        # project = MainProject.objects.all()
+        project = MainProject.objects.order_by('priority')
         data = {
             'project': project,
         } 
         return render(request, self.template_name, data)
 
+class viewProject(View):
+    template_name = "viewProject.html"
+
+    def get(self, request, *args, **kwargs):
+        project = get_object_or_404(MainProject, pk=kwargs['id'])
+        todolist = todolistmodel.objects.all()
+        print  todolist
+        data = {
+             'todolist': todolist,
+             'project': project,
+        }
+        return render(request, self.template_name, data)
 
 
 class addProject(View):
