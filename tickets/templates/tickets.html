@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+
+
+<!-- *******************************************MENU PRINCIPAL***************************** -->
+    <section class="menu_proyectos">
+    <a class="a_agregar_proyectos" href="{% url "AddTicketView" %}">Agregar ticket</a>
+</section>
+<!-- *******************************************FORMULARIO ***************************** -->
+<br>
+{% csrf_token %}
+    <table>
+        <thead>
+            <th>Proyecto</th>
+            <th>Ticket</th>
+            <th>Usuario asignado</th>
+            <th>Usuario peticion</th>
+            <th>Ver </th>
+        </thead>
+        <tbody>
+{#        {% for project in projects%}#}
+{#            <h4>{{ project.name}}!</h4>#}
+{#        {%  endfor %}#}
+
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.project}}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.user_assigned}}</td>
+            <td>{{ ticket.user_reporter}}</td>
+            <td>Ver</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block contenido %}
+    Tickets
+{% endblock %}

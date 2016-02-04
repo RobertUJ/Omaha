@@ -6,23 +6,24 @@
 
 <!-- *******************************************MENU PRINCIPAL***************************** -->
     <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "AddTodoListView" %}">Agregar Lista</a>
+    <a class="a_agregar_proyectos" href="{% url "SpecificTaskView" %}">Ver tarea en especifica</a>
+    <a class="a_agregar_proyectos" href="{% url "AddTaskView" %}">Agregar tarea</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
 <br>
 {% csrf_token %}
     <table border="0">
         <thead>
-            <th>Nombre</th>
             <th>Tarea</th>
-            <th>Ver tareas</th>
+            <th>Descripcion</th>
+            <th>Ver </th>
         </thead>
         <tbody>
-        {% for todo in todo %}
+        {% for task in tasks %}
         <tr>
-            <td>{{ todo.name }}</td>
-            <td>{{ todo.description }}</td>
-            <td><a href={{ tasks.id }}>Ver</a></td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.description }}</td>
         </tr>
         </tbody>
         {% endfor %}
@@ -31,5 +32,5 @@
 {% endblock %}
 
 {% block contenido %}
-lista de que hacer
+Tareas
 {% endblock %}

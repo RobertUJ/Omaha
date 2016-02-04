@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import View
 from design.models import DesignModelRequest, DesignModelResponse
 from design.forms import DesignFormRequest, DesignFormResponse
@@ -45,7 +45,7 @@ class DesignResponseView(View):
         return render(request,self.template_name,data)
 
     def post(self,request,*args,**kwargs):
-            form = DesignFormResponse(request.POST)
+            form = DesignFormResponse(request.POST or None, request.FILES or None)
             data = {
                 'form': form,
             }

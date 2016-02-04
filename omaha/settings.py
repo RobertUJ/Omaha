@@ -24,6 +24,8 @@ INSTALLED_APPS = (
     'accounts',
     'todolist',
     'design',
+    'tasks',
+    'tickets',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,15 +82,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
-MEDIA_URL = '/static/media/'
-
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-)
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"staticfiles")
+# STATIC_ROOT = os.pathpath.join(BASE_DIR, "staticfiles")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static/media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
+
 if LOCAL:
     try:
         from local_settings import *

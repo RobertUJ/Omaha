@@ -1,8 +1,12 @@
 from django.db import models
-from projects.models import MainProject
 
-class todolistmodel(models.Model):
+from projects.models import MainProject
+from todolist.models import todolistmodel
+
+
+class tasksModel(models.Model):
     project = models.ManyToManyField(MainProject)
+    todolist = models.ManyToManyField(todolistmodel)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     start_date = models.CharField(max_length=100,null=True, blank=True)
