@@ -66,7 +66,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'omaha',
         'USER': 'root',
-        'PASSWORD': 'ventamovil'
+        'PASSWORD': 'root'
     }
 }
 
@@ -79,6 +79,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+AUTH_PROFILE_MODULE = 'omaha.UserProfile'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'

@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
-
 # Create your models here.
-from django.conf import settings
 
 
 class UserProfile(models.Model):
-    username = models.CharField(max_length=100, blank=False, null=False,default="")
-    email = models.EmailField(max_length=100, default='user@email.com')
-    password = models.CharField(max_length=50,blank=False,null=False,default="")
+    #user = models.OneToOneField(User, unique=True, related_name='Perfil')
+    user = models.ForeignKey(User, unique=True, related_name='perfil')
 
-   # photo = models.ImageField(upload_to='profiles',blank=True,null=True)
+    comentario = models.TextField(max_length=100, default='')
+    photo = models.ImageField(upload_to='UserProfile',blank=True,null=True)
 
     #def __str__(self):
-        #return self.UserProfile.username
+     #   return self.UserProfile.user
 
 

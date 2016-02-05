@@ -10,9 +10,13 @@
             </div>
 
             <form method="post" action="" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <div id="register">
+                    {% csrf_token %}
+                    {{ formusr.as_p }}
+                    {{ formprofile.as_p }}
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="/inicio_de_sesion" target="_self"> <input type="button" name="boton" value="Regresar" /></a>
+                </div>
             </form>
         </div>
     </div>

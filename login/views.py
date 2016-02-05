@@ -1,11 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-from django.http import request, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, redirect
 
-# Create your views here.
-from django.template import RequestContext
+
 
 from login.forms import LoginForm
 
@@ -34,22 +32,16 @@ class LoginView(FormView):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            print request.POST
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
                     #login(request,user)
                     #return redirect(reverse('projects:IndexView'))
                     mensaje = "Te has identificado de modo correcto"
-                    print  mensaje
                 else:
                     mensaje = "Tu usuario esta inactivo"
-                    print  mensaje
             else:
                 mensaje = "Nombre y/o password incorrectos"
-                print  mensaje
-        #else:
-            #print "no, algo esta mal"
 
         ctx = {'form':form,'mensaje':mensaje}
         return render(request,self.template_name,ctx)
