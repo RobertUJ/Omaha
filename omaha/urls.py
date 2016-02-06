@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^', include('todolist.urls')),
     url(r'^', include('design.urls')),
     url(r'^', include("accounts.urls")),
+    url(r'^', include("modules.urls")),
     # url(r'^accounts/',include("accounts.urls")),
 ]
 

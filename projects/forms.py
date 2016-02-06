@@ -22,5 +22,3 @@ class addProjectForm(ModelForm):
         }
         fields = '__all__'
 
-   # def __unicode__(self):
-   #     return "%s" % self.project_name

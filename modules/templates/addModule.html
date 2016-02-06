@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un modulo nuevo {% endblock %}
+{% block content %}
+{#-----------------------------------------Menu principal-----------------------------------------------#}
+<section class="menu_modulos">
+        <a class="a_ver_modulos" href="{% url "ModulesView" %}">Volver a inicio</a>
+    </section>
+{#------------------------------------------Formulario-----------------------------------------------------#}
+<form method="POST" action="">
+<div id="container">
+  <div id="row">
+
+  	<div id="left">
+  		<p>Nombre:</p>
+  		<p>Descripcion:</p>
+        <p>Justificacion:</p>
+        <p>Analisis:</p>
+  	</div>
+
+      <div id="right">
+        {% csrf_token %}
+        <p>{{ form.name }}</p>
+        <p>{{ form.description }}</p>
+        <p>{{ form.justification }}</p>
+        <p>{{ form.analysis }}</p>
+          {{ form.errors }}
+  	</div>
+   </div>
+</div>
+<input class="btnAgregar" type="submit" value="Agregar Modulo">
+<a href="/modulos" target="_self"> <input type="button" name="boton" value="Regresar" /></a>
+</form>
+
+</body>
+{% endblock%}
+
+{% block contenido %}
+Agregar un modulo nuevo
+{% endblock %}

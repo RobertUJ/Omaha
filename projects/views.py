@@ -3,6 +3,7 @@ from django.views.generic.base import View
 
 from projects.forms import addProjectForm
 from projects.models import MainProject
+from todolist.models import todolistmodel
 
 
 class IndexView(View):

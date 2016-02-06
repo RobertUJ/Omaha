@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response, redirect
 
 
@@ -35,8 +36,8 @@ class LoginView(FormView):
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
-                    #login(request,user)
-                    #return redirect(reverse('projects:IndexView'))
+                    login(request,user)
+                    return HttpResponseRedirect('/modulos')
                     mensaje = "Te has identificado de modo correcto"
                 else:
                     mensaje = "Tu usuario esta inactivo"

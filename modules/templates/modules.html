@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Modulos {% endblock %}
+{% block content %}
+{#-----------------------------------------Menu principal-----------------------------------------------#}
+<section class="menu_modulos">
+        <a class="a_ver_proyectos" href="{% url "addModuleView" %}">Agregar un nuevo modulo</a>
+    </section>
+{#------------------------------------------Formulario-----------------------------------------------------#}
+<form method="POST" action="">
+<div id="container">
+  <div id="row">
+  	<div id="left">
+  		<p>Nombre:</p>
+  		<p>Descripcion:</p>
+        <p>Justificacion:</p>
+        <p>Analisis:</p>
+  	</div>
+
+    <div id="right">
+        {% for module in module %}
+            {% csrf_token %}
+            <p>{{ module.name }}</p>
+            <p>{{ module.description }}</p>
+            <p>{{ module.justification }}</p>
+            <p>{{ module.analysis }}</p>
+        {% endfor %}
+  	</div>
+   </div>
+</div>
+</form>
+
+</body>
+{% endblock%}
