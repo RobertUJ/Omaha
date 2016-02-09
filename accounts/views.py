@@ -1,4 +1,4 @@
-
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import FormView
 from accounts.forms import RegisterFormProfile, RegisterFormUser
@@ -30,10 +30,25 @@ class RegisterView(FormView):
             new_profile = formProfile.save(commit=False)
             new_profile.user = new_user
             new_profile.save()
-
-
-
             return render(request,self.template_name,ctx)
         else:
-            # print form.e
             return render(request,self.template_name,ctx)
+
+class ProfileView(FormView):
+    template_name = "profile.html"
+
+    def get(self, request, *args, **kwargs):
+        usermodel = UserProfile.objects.all()
+        usermodel2 = User.objects.all()
+        ctx = {
+            'model2':usermodel2,
+            'model':usermodel,
+        }
+        return render(request, self.template_name, ctx)
+
+    def post(self, request, *args, **kwargs):
+        usermodel = UserProfile.objects.all()
+        ctx = {
+            'model':usermodel,
+        }
+        return render(request,self.template_name,ctx)

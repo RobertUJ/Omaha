@@ -22,7 +22,8 @@ class RegisterFormUser(forms.ModelForm):
 class RegisterFormProfile(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('photo',)
+        fields = ('descripcion',)
+
 
     #     user = forms.CharField(min_length=5)
     #     email = forms.EmailField()

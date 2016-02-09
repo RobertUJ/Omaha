@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Mi Perfil{% endblock title %}
+{% block content %}
+<div class="row">
+{% csrf_token %}
+    <h1>Este es tu perfil</h1>
+    {% if user.is_authenticated %}
+        <p>primer nombre:</p>
+        <p>{{ model2.username.first_name }}</p>
+        <p>Apellido:</p>
+        <p>{{ model2.last_name }}</p>
+        <p>Correo electorinico:</p>
+        <p>{{ model2.email }}</p>
+        <p></p>
+    {% endif %}
+    <section>
+        <h3><a href="#">editar</a></h3>
+    </section>
+</div>
+
+{% endblock %}

@@ -7,28 +7,30 @@
         <a class="a_ver_proyectos" href="{% url "addModuleView" %}">Agregar un nuevo modulo</a>
     </section>
 {#------------------------------------------Formulario-----------------------------------------------------#}
-<form method="POST" action="">
-<div id="container">
-  <div id="row">
-  	<div id="left">
-  		<p>Nombre:</p>
-  		<p>Descripcion:</p>
-        <p>Justificacion:</p>
-        <p>Analisis:</p>
-  	</div>
+<br>
+{% csrf_token %}
+    <table border="0">
+        <thead>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Justificacion</th>
+            <th>Fecha de creacion</th>
 
-    <div id="right">
+        </thead>
+        <tbody>
         {% for module in module %}
-            {% csrf_token %}
-            <p>{{ module.name }}</p>
-            <p>{{ module.description }}</p>
-            <p>{{ module.justification }}</p>
-            <p>{{ module.analysis }}</p>
+        <tr>
+            <td>{{ module.name }}</td>
+            <td>{{ module.description }}</td>
+            <td>{{ module.justification }}</td>
+            <td>{{ module.start_date }}</td>
+        </tr>
+        </tbody>
         {% endfor %}
-  	</div>
-   </div>
-</div>
-</form>
+    </table>
 
-</body>
-{% endblock%}
+{% endblock %}
+
+{% block contenido %}
+Modulos
+{% endblock %}

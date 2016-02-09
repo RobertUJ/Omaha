@@ -31,11 +31,14 @@ class addModuleView(View):
 
     def post(self,request,*args,**kwargs):
             form = addModuleForm(request.POST)
+            message = ''
             data = {
                 'form': form,
             }
             if form.is_valid():
                 form.save(commit=True)
+                message = 'Se agrego correctamente'
+                data['message']=message
                 return render(request,self.template_name,data)
             else:
                 # print form.e
