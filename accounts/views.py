@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views.generic import FormView
 from accounts.forms import RegisterFormProfile, RegisterFormUser
 from accounts.models import UserProfile
-
 
 class RegisterView(FormView):
     template_name = "register.html"
@@ -37,6 +38,7 @@ class RegisterView(FormView):
 class ProfileView(FormView):
     template_name = "profile.html"
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion'))
     def get(self, request, *args, **kwargs):
         usermodel = UserProfile.objects.all()
         usermodel2 = User.objects.all()

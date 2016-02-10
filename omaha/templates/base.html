@@ -10,14 +10,15 @@
 </HEAD>
 <BODY>
 <section class="menu_principal">
-        <div class="user_info">
-            <h2>Usuario pruebas</h2>
-            {% if user.is_authenthicated %}
-                 <a href="/logout/" class="a_regresar_venta">Cerrar sesion</a>
-            {% else %}
-                <a id="login" href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a>
-            {% endif%}
-        </div>
+        <h2>Usuario: </h2>
+        {% if user.is_authenticated %}
+            <h2>{{ user.username }}</h2>
+            <a id="label" href="/logout" class="a_regresar_venta" onclick="">Cerrar sesion</a>
+        {% else %}
+            <a href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a>
+        {% endif%}
+{#        <div class="user_info">#}
+{#        </div>#}
         <div class="main_title">
             <h2><div class="page_title">{% block contenido %}  {% endblock %}</div></h2>
         </div>

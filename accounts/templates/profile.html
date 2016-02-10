@@ -6,7 +6,7 @@
     <h1>Este es tu perfil</h1>
     {% if user.is_authenticated %}
         <p>primer nombre:</p>
-        <p>{{ model2.username.first_name }}</p>
+        <p>{{ model2.user.first_name }}</p>
         <p>Apellido:</p>
         <p>{{ model2.last_name }}</p>
         <p>Correo electorinico:</p>

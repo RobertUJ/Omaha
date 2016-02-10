@@ -8,7 +8,7 @@ from accounts.models import UserProfile
 class RegisterFormUser(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name','last_name','username','password','email')
+        fields = ('username','first_name','last_name','password',)
 
         user = ['username']
         if User.objects.filter(username=user):
@@ -22,7 +22,7 @@ class RegisterFormUser(forms.ModelForm):
 class RegisterFormProfile(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('descripcion',)
+        fields = ('descripcion','photo',)
 
 
     #     user = forms.CharField(min_length=5)

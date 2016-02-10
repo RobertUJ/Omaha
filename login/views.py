@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
@@ -36,9 +37,9 @@ class LoginView(FormView):
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
-                    login(request,user)
+                    login(request, user)
                     return HttpResponseRedirect('/modulos')
-                    mensaje = "Te has identificado de modo correcto"
+                    print "Te has identificado de modo correcto"
                 else:
                     mensaje = "Tu usuario esta inactivo"
             else:
@@ -52,4 +53,4 @@ class LogoutView(TemplateView):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.success(request, 'Te has descnectado con exito.')
-        return render(reverse('inicio_de_sesion'))
+        return HttpResponseRedirect('/inicio_de_sesion')
