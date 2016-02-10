@@ -1,6 +1,7 @@
+
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from django.utils.decorators import method_decorator
+from django.shortcuts import render
 from django.views.generic.base import View
 from design.models import DesignModelResponse
 from design.forms import DesignFormRequest, DesignFormResponse
@@ -37,7 +38,6 @@ class DesignRequestView(View):
                 form.save(commit=True)
                 return render(request,self.template_name,data)
             else:
-                # print form.e
                 return render(request,self.template_name,data)
 
 class DesignResponseView(View):
@@ -51,7 +51,7 @@ class DesignResponseView(View):
         return render(request,self.template_name,data)
 
     def post(self,request,*args,**kwargs):
-            form = DesignFormResponse(request.POST)
+            form = DesignFormResponse(request.POST or None, request.FILES or None)
             data = {
                 'form': form,
             }

@@ -9,40 +9,58 @@
 </section>
 <!-- *******************************************Menu principal ***************************** -->
 <br>
-<section class="proyectos_resumen">
-    <div id="container">
-        <div id="row">
-  	        <div id="left">
-                    <p>Nombre:</p>
-  		            <p>Fecha de incicio:</p>
-                    <p>Fecha final:</p>
-                    <p>URL:</p>
-                    <p>Dominio:</p>
-                    <p>Servidor asignado:</p>
-                    <p>Tipo:</p>
-                    <p>Cliente:</p>
-                    <p>Plataforma:</p>
-                    <p>Prioridad:</p>
-                    <p>Usuarios:</p>
-  	        </div>
-        {% csrf_token %}
-            <div id="right">
-    	            <p>{{ project.name }}</p>
-                    <p>{{ project.start_date }}</p>
-                    <p>{{ project.end_date }}</p>
-                    <p>{{ project.url }}</p>
-                    <p>{{ project.domain }}</p>
-                    <p>{{ project.server_assigned }}</p>
-                    <p>{{ project.type }}</p>
-                    <p>{{ project.client }}</p>
-                    <p>{{ project.platform }}</p>
-                    <p>{{ project.priority }}</p>
-                    <p>{{ project.users }}</p>
-                    <p>{{ todolist.name }}</p>
-  	        </div>
-        </div>
-    </div>
-</section>
+    <h1 style="text-align: center;">{{ project.name }}</h1>
+<table border="0">
+    <thead>
+        <th>Fecha de incicio:</th>
+        <th>Fecha final:</th>
+        <th>URL:</th>
+        <th>Dominio:</th>
+        <th>Servidor:</th>
+        <th>Cliente:</th>
+        <th>Plataforma:</th>
+        <th>Prioridad:</th>
+        <th>Usuarios:</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ project.start_date }}</td>
+            <td>{{ project.due_date }}</td>
+            <td>{{ project.url }}</td>
+            <td>{{ project.domain }}</td>
+            <td>{{ project.server_assigned }}</td>
+            <td>{{ project.client }}</td>
+            <td>{{ project.platform }}</td>
+            <td>{{ project.priority }}</td>
+            <td>{{ project.users }}</td>
+        </tr>
+    </tbody>
+</table>
+    <br>
+    <h1 style="text-align: center">Lista de pendientes</h1>
+<table border="0">
+    <thead>
+        <th>Lista</th>
+        <th>Descripcion</th>
+        <th>fecha de inicio</th>
+        <th>Fecha final</th>
+        <th>Usuario asignado</th>
+        <th>Ver tareas</th>
+    </thead>
+    <tbody>
+        {% for todolist in todolist %}
+        <tr>
+            <td>{{ todolist.name}}</td>
+            <td>{{ todolist.description }}</td>
+            <td>{{ todolist.start_date }}</td>
+            <td>{{ todolist.due_date }}</td>
+            <td>{{ todolist.user_assigner }}</td>
+            <td><a href="/{{ project.name }}/{{todolist.id}}">Ver</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
 
 {% block contenido %}

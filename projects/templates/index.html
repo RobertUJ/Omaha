@@ -10,20 +10,20 @@
 <!-- *******************************************Menu principal ***************************** -->
     <br>
 {% csrf_token %}
-<table border="0">
+<table border="0" class="table_projects">
     <thead>
         <th>Nombre:</th>
+        <th>Cliente:</th>
         <th>Plataforma:</th>
-        <th>Usuarios:</th>
         <th>Ver proyecto:</th>
 </thead>
-<tbody>
+<tbody
    {% for project in project %}
     <tr>
         <td>{{ project.name }}</td>
+        <td>{{ project.client }}</td>
         <td>{{ project.platform }}</td>
-        <td>{{ project.users }}</td>
-        <td><a href="/viewProject/{{project.id}}">Ver</a> </td>
+        <td><a href="/proyecto.{{project.name}}">Ver</a> </td>
     </tr>
 </tbody>
     {% endfor %}

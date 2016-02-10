@@ -1,49 +1,66 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import View
 
 from projects.models import MainProject
+from tasks.models import tasksModel
 from todolist.models import todolistmodel
-from todolist.forms import addTaskForm
+from todolist.forms import addTodoListForm
+
 
 class TodoListView(View):
     template_name = "todolist.html"
 
     def get(self, request, *args, **kwargs):
-        tasks = todolistmodel.objects.all()
+        todo = todolistmodel.objects.all()
         data = {
-            'tasks': tasks,
+            'todo': todo,
         }
+
         return render(request, self.template_name, data)
 
-class SpecificTaskView(View):
-    template_name = "specifictask.html"
+
+class SpecificTodoListView(View):
+    template_name = "specifictodo.html"
 
     def get(self, request, *args, **kwargs):
-        specifictask = todolistmodel.objects.all()
+        project = get_object_or_404(MainProject, name=kwargs['name'])
+        todolist = get_object_or_404(todolistmodel, pk=kwargs['id'])
+        specifictask = tasksModel.objects.filter(todolist=todolist)
+
         data = {
+            'project': project,
+            'todolist': todolist,
             'specifictask': specifictask,
         }
+
         return render(request, self.template_name, data)
 
-class addTaskView(View):
-    template_name = "addtask.html"
+
+class AddTodoListView(View):
+    template_name = "addtodolist.html"
+
     def get(self, request, *args, **kwargs):
-        form = addTaskForm()
+        form = addTodoListForm()
         projects = MainProject.objects.all()
         data = {
-            'form':form,
+            'form':form ,
             'projects': projects,
         }
         return render(request,self.template_name,data)
 
     def post(self,request,*args,**kwargs):
-            form = addTaskForm(request.POST)
+            form = addTodoListForm(request.POST)
+            projects = MainProject.objects.all()
+            todolists = todolistmodel.objects.all()
             data = {
                 'form': form,
-
+                'projects': projects,
+                'todolists': todolists,
             }
             if form.is_valid():
+                print "OK"
                 form.save(commit=True)
                 return render(request,self.template_name,data)
             else:
+                print "NOT OK"
                 return render(request,self.template_name,data)

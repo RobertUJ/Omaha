@@ -1,6 +1,7 @@
+from django import forms
 from django.db.models.fields.files import ImageField
 from django.forms import ModelForm, TextInput
-from django.forms.widgets import EmailInput, NumberInput, URLInput, DateInput, Textarea, FileInput
+from django.forms.widgets import DateInput, Textarea, FileInput
 
 from design.models import DesignModelRequest, DesignModelResponse
 
@@ -20,16 +21,30 @@ class DesignFormRequest(ModelForm):
         }
         fields = '__all__'
 
-class DesignFormResponse(ModelForm):
+class DesignFormResponse(forms.ModelForm):
     class Meta:
         model = DesignModelResponse
-        fields = '__all__'
-        widgets = {
-            'designer_assigned':TextInput(attrs={'placeholder':'Disenador asignado'}),
-            'user_assigned':Textarea(attrs={'placeholder':'Usuario peticion'}),
-            'assignment':TextInput(attrs={'placeholder':'peticion'}),
-            'files':FileInput(),
-            'platform':DateInput(attrs={'placeholder':'Fecha peticion'}),
-            'type':DateInput(attrs={'placeholder':'Fecha tentativa'}),
-            'comment':Textarea(attrs={'placeholder':'Comentario'}),
-        }
+        fields = [
+            'designer_assigned',
+            'user_assigner',
+            'assignment',
+            'files',
+            'platform',
+            'type',
+            'comment',
+        ]
+        # fields = '__all__'
+
+# class DesignFormResponse(ModelForm):
+#     class Meta:
+#         model = DesignModelResponse
+#         widgets = {
+#             'designer_assigned':TextInput(attrs={'placeholder':'Disenador asignado'}),
+#             'user_assigner':TextInput(attrs={'placeholder':'Usuario peticion'}),
+#             'assignment':TextInput(attrs={'placeholder':'peticion'}),
+#             'files':ImageField(),
+#             'platform':TextInput(attrs={'placeholder':'Fecha peticion'}),
+#             'type':TextInput(attrs={'placeholder':'Fecha tentativa'}),
+#             'comment':Textarea(attrs={'placeholder':'Comentario'}),
+#         }
+#         fields = '__all__'

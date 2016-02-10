@@ -25,6 +25,8 @@ INSTALLED_APPS = (
     'todolist',
     'design',
     'modules',
+    'tasks',
+    'tickets',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,12 +89,17 @@ AUTH_PROFILE_MODULE = 'omaha.UserProfile'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
-MEDIA_URL = '/static/media/'
-
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-)
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"staticfiles")
+# STATIC_ROOT = os.pathpath.join(BASE_DIR, "staticfiles")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static/media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
+
 if LOCAL:
     try:
         from local_settings import *

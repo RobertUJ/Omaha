@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+
+    <!-- *******************************************MENU PRINCIPAL***************************** -->
+    <section class="menu_proyectos">
+        <a class="a_agregar_proyectos" href="{% url "TodoListView" %}">Voler a Listas</a>
+        <a class="a_agregar_proyectos" href=/tareas.{{todolist.id}}>Agregar Tarea</a>
+    </section>
+    <!-- *******************************************FORMULARIO ***************************** -->
+<br>
+<h2>{{ todolist.name }} > Tareas</h2>
+{% csrf_token %}
+    <table border="0">
+        <thead>
+            <th>Tarea</th>
+            <th>Descripcion</th>
+            <th>Fecha de incicio</th>
+            <th>Fecha final</th>
+            <th>Usuario asignado</th>
+            <th>Usuario peticion</th>
+        </thead>
+        <tbody>
+        {% for specifictask in specifictask %}
+        <tr>
+            <td>{{ specifictask.name }}</td>
+            <td>{{ specifictask.description }}</td>
+            <td>{{ specifictask.start_date }}</td>
+            <td>{{ specifictask.due_date }}</td>
+            <td>{{ specifictask.user_assigned }}</td>
+            <td>{{ specifictask.user_assigner }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</body>
+{% endblock%}
+
+{% block contenido %}
+    Agregar una nueva tarea
+{% endblock %}

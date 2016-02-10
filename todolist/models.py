@@ -1,7 +1,5 @@
 from django.db import models
-
 from projects.models import MainProject
-
 
 class todolistmodel(models.Model):
     project = models.ManyToManyField(MainProject)

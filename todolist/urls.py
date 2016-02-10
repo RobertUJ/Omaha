@@ -1,11 +1,11 @@
 from django.conf.urls import patterns, url
-from todolist.views import TodoListView, SpecificTaskView, addTaskView
+from todolist.views import TodoListView, SpecificTodoListView, AddTodoListView
 
 
 urlpatterns = [
     url(  r'^todolist/$', TodoListView.as_view(), name='TodoListView'),
-    url(  r'^specifictask/$', SpecificTaskView.as_view(), name='SpecificTaskView'),
-    url(  r'^addtask/$', addTaskView.as_view(), name='AddTaskView'),
+    url(  r'^(?P<name>.*)/(?P<id>.*)/$', SpecificTodoListView.as_view(), name='SpecificTodoListView'),
+    url(  r'^addtodolist/$', AddTodoListView.as_view(), name='AddTodoListView'),
 
 ]
 

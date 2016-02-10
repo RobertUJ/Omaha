@@ -6,8 +6,7 @@
 
 <!-- *******************************************MENU PRINCIPAL***************************** -->
     <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "SpecificTaskView" %}">Ver tarea en especifica</a>
-    <a class="a_agregar_proyectos" href="{% url "AddTaskView" %}">Agregar tarea</a>
+    <a class="a_agregar_proyectos" href="{% url "AddTodoListView" %}">Agregar Lista</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
 <br>
@@ -16,14 +15,14 @@
         <thead>
             <th>Nombre</th>
             <th>Tarea</th>
-            <th>Ver tarea</th>
+            <th>Ver tareas</th>
         </thead>
         <tbody>
-        {% for task in tasks %}
+        {% for todo in todo %}
         <tr>
-            <td>{{ task.name }}</td>
-            <td>{{ task.description }}</td>
-            <td><a href="#">Ver</a></td>
+            <td>{{ todo.name }}</td>
+            <td>{{ todo.description }}</td>
+            <td><a href={{ tasks.id }}>Ver</a></td>
         </tr>
         </tbody>
         {% endfor %}
