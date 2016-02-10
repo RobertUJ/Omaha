@@ -9,25 +9,16 @@
 </section>
 <!-- *******************************************Menu principal ***************************** -->
     <br>
-{% csrf_token %}
-<table border="0" class="table_projects">
-    <thead>
-        <th>Nombre:</th>
-        <th>Cliente:</th>
-        <th>Plataforma:</th>
-        <th>Ver proyecto:</th>
-</thead>
-<tbody
+
    {% for project in project %}
-    <tr>
-        <td>{{ project.name }}</td>
-        <td>{{ project.client }}</td>
-        <td>{{ project.platform }}</td>
-        <td><a href="/proyecto.{{project.name}}">Ver</a> </td>
-    </tr>
-</tbody>
+    <div class="proyecto">
+        <h3>{{ project.name }}</h3>
+        <p><b>Cliente: </b>{{ project.client }}</p>
+        <p><b>Plataforma:</b> {{ project.platform }}</p>
+        <p><b>Tareas:</b> 3/10</p>
+        <p><a href="/proyecto.{{project.name}}">Ver detalles</a></p>
+    </div>
     {% endfor %}
-    </table>
 </body>
 {% endblock %}
 

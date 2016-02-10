@@ -11,8 +11,26 @@
     <a class="a_agregar_proyectos" href="{% url "DesignResponseView" %}">Respuesta diseno</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
-
-</body>
+<br>
+<h2 style="text-align: center">pendientes de diseno</h2>
+    <table>
+        <thead>
+            <th>Peticion</th>
+            <th>Plataforma</th>
+            <th>Tipo</th>
+            <th>Ver </th>
+        </thead>
+        <tbody>
+        {% for design in designs %}
+        <tr>
+            <td>{{ design.assignment}}</td>
+            <td>{{ design.platform}}</td>
+            <td>{{ design.type}}</td>
+            <td><a href="/diseno.{{ design.id }}">Ver</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 {% endblock%}l
 {% block contenido %}
     Diseno

@@ -16,8 +16,6 @@ class addProjectForm(ModelForm):
             'server_assigned':TextInput(attrs={'placeholder':'Servidor asignado*'}),
             'type':TextInput(attrs={'placeholder':'Tipo*'}),
             'client':TextInput(attrs={'placeholder':'Cliente*'}),
-            'platform':TextInput(attrs={'placeholder':'Plataforma*'}),
-            'priority':NumberInput(attrs={'placeholder':'Prioridad*'}),
             'users':TextInput(attrs={'placeholder':'usuarios*'})
         }
         fields = '__all__'

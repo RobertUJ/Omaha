@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^', include("tasks.urls")),
     url(r'^', include('projects.urls')),
     url(r'^', include('tickets.urls')),
+    url(r'^', include('documents.urls')),
+    url(r'^', include('contact.urls')),
 
 ]
 
