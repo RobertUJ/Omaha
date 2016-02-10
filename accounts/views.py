@@ -27,6 +27,7 @@ class RegisterView(FormView):
             'formprofile':formProfile
         }
         if formUser.is_valid() and formProfile.is_valid():
+            formUser.set_password(formUser.Meta.password)
             new_user = formUser.save()
             new_profile = formProfile.save(commit=False)
             new_profile.user = new_user
