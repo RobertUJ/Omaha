@@ -11,10 +11,12 @@ from todolist.models import todolistmodel
 
 class IndexView(View):
     template_name = "index.html"
-    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
-        project = MainProject.objects.order_by('priority')
+        project = MainProject.objects.all()
+        print "-"*50
+        print project
         data = {
             'project': project,
         } 
