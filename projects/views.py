@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 
 from projects.forms import addProjectForm
@@ -6,8 +8,10 @@ from projects.models import MainProject
 from todolist.models import todolistmodel
 
 
+
 class IndexView(View):
     template_name = "index.html"
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
 
     def get(self, request, *args, **kwargs):
         project = MainProject.objects.order_by('priority')
@@ -16,8 +20,10 @@ class IndexView(View):
         } 
         return render(request, self.template_name, data)
 
+
 class viewProject(View):
     template_name = "viewProject.html"
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
 
     def get(self, request, *args, **kwargs):
         project = get_object_or_404(MainProject, name=kwargs['name'])

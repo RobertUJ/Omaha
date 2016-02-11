@@ -1,13 +1,15 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 
 from projects.models import MainProject
 from tasks.models import todolistmodel
 from tasks.forms import addTaskForm
 
-
 class TasksIndexView(View):
     template_name = "tasks.html"
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
 
     def get(self, request, *args, **kwargs):
         tasks = todolistmodel.objects.all()

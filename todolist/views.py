@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 
 from projects.models import MainProject
@@ -6,10 +8,9 @@ from tasks.models import tasksModel
 from todolist.models import todolistmodel
 from todolist.forms import addTodoListForm
 
-
 class TodoListView(View):
     template_name = "todolist.html"
-
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         todo = todolistmodel.objects.all()
         data = {
