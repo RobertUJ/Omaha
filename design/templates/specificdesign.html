@@ -7,37 +7,44 @@
     <br>
 <!-- ******************************l*************MENU PRINCIPAL***************************** -->
     <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "DesignRequestView" %}">Peticion diseno</a>
+    <a class="a_agregar_proyectos" href="{% url "DesignView" %}">Volver a diseno</a>
     <a class="a_agregar_proyectos" href="{% url "DesignResponseView" %}">Respuesta diseno</a>
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
 <br>
-<h2 style="text-align: center">pendientes de diseno</h2>
-    <table>
+<h2>
+{% for design in specificdesign %}
+    Diseno {{ design.platform}} </h2>
+{% endfor%}
+{% csrf_token %}
+    <table border="0">
         <thead>
-            <th>proyecto</th>
+            <th>Proyecto</th>
             <th>Usuario peticion</th>
             <th>Peticion</th>
             <th>Plataforma</th>
             <th>Tipo</th>
-            <th>Comentario </th>
-            <th>Ver </th>
+            <th>Fecha peticion</th>
+            <th>Fecha tentativa</th>
+            <th>Comentario</th>
         </thead>
         <tbody>
-        {% for design in designs %}
+        {% for design in specificdesign %}
         <tr>
-            <td>{{ design.project}}</td>
+            <td>{{ design.project }}</td>
             <td>{{ design.user_assigner }}</td>
-            <td>{{ design.assignment}}</td>
-            <td>{{ design.platform}}</td>
-            <td>{{ design.type}}</td>
-            <td>{{ design.comment}}</td>
-            <td>Ver</td>
+            <td>{{ design.assignment }}</td>
+            <td>{{ design.platform }}</td>
+            <td>{{ design.type }}</td>
+            <td>{{ design.asked_date }}</td>
+            <td>{{ design.tentative_date }}</td>
+            <td>{{ design.comment }}</td>
         </tr>
         </tbody>
         {% endfor %}
     </table>
-{% endblock%}l
+</body>
+{% endblock%}
 {% block contenido %}
     Diseno
 {% endblock %}

@@ -5,16 +5,40 @@
 
 <!-- *********************************Menu proyectos**********************************-->
 <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
+{#    <a class="a_agregar_proyectos" href="{% url "IndexVidew" %}">Volver a inicio</a>#}
 </section>
 <!-- *******************************************Menu principal ***************************** -->
-    <br>
-    <figure>
-        <img src="{% staticfiles "media/base1.png" %}" alt=""/>
-    </figure>
+<br>
+<section class="subir_documentos">
+    <div class="a_subir_img" ><a href="{% url "UploadDocumentsView" %}">Subir una imagen</a></div>
+</section>
+<br>
+
+{% for pdf in pdfDocumentos %}
+    <div class="PDF">
+        <h3>{{ pdf.name }}</h3>
+        <p><a href="{{ MEDIA_URL }}/ADS.pdf">Ver</a></p>
+    </div>
+{% endfor %}
+
+{% for imgDocumento in imgDocumentos %}
+    <div class="documentos">
+        <h3>{{ imgDocumento.name }}</h3>
+        <figure><img src="{{ MEDIA_URL }}{{ imgDocumento.images }}" height="100px"alt="Ver PDF"></figure>
+        <p><a href="{{ MEDIA_URL }}{{ imgDocumento.images }}">Ver</a></p>
+    </div>
+{% endfor %}
+
+{% for imgDiseno in imgDisenos %}
+    <div class="imagenes">
+        <h3>{{ imgDiseno.assignment }}</h3>
+        <figure><img src="{{ MEDIA_URL }}{{ imgDiseno.files }}" height="100px"alt="Documentos"></figure>
+        <p><a href="download">Descargar</a></p>
+    </div>
+{% endfor %}
 
 {% endblock %}
 
 {% block contenido %}
-    Indice de proyectos
+    Documentos relevantes
 {% endblock %}

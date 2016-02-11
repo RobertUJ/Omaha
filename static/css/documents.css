@@ -1,10 +1,10 @@
 /*------------------------------------------PROJECTS/index--------------------------------*/
-.documentos{
+.documentos, .imagenes, .PDF{
     display: inline-block;
     width: 150px;
     height:200px;
     border: 1px solid darkgrey;
-    margin-left: 40px;
+    margin-left: 10px;
     margin-bottom: 25px;
     font-size: 1.1rem;
     line-height: 1.3;
@@ -12,22 +12,22 @@
     overflow: hidden;
     border-radius: 5%;
 }
-.documentos h3{
-    background-color: dodgerblue;
+.documentos h3, .imagenes h3, .PDF h3{
+    background-color: gray;
     color:white;
     text-align: center;
 }
 
-.documentos p{
+.documentos p, .imagenes h3, .PDF h3{
     text-align: center;
 }
-.documentos p a{
+.documentos p a, .imagenes p a, .PDF p a{
     color:dodgerblue;
 }
-.documentos figure{
-   margin-left: 30px;
+.documentos figure, .imagenes figure, .PDF figure{
+   margin-left: 20px;
 }
 
-.documentos:hover{
+.documentos:hover, .imagenes:hover, .PDF:hover{
     background-color: gainsboro;
 }
