@@ -2,19 +2,22 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
-
 from projects.models import MainProject
 from tasks.models import tasksModel
 from todolist.models import todolistmodel
 from todolist.forms import addTodoListForm
 
+
 class TodoListView(View):
     template_name = "todolist.html"
+
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs): 
         todo = todolistmodel.objects.all()
+        # tasks = get_object_or_404(tasksModel, pk=kwargs['id'])
         data = {
             'todo': todo,
+            # 'tasks': tasks,
         }
 
         return render(request, self.template_name, data)
@@ -26,8 +29,7 @@ class SpecificTodoListView(View):
     def get(self, request, *args, **kwargs):
         project = get_object_or_404(MainProject, name=kwargs['name'])
         todolist = get_object_or_404(todolistmodel, pk=kwargs['id'])
-        specifictask = tasksModel.objects.filter(todolist=todolist)
-
+        specifictask = tasksModel.objects.filter(todolist=todolist) 
         data = {
             'project': project,
             'todolist': todolist,
@@ -44,7 +46,7 @@ class AddTodoListView(View):
         form = addTodoListForm()
         projects = MainProject.objects.all()
         data = {
-            'form':form ,
+            'form': form,
             'projects': projects,
         }
         return render(request,self.template_name,data)
@@ -59,9 +61,7 @@ class AddTodoListView(View):
                 'todolists': todolists,
             }
             if form.is_valid():
-                print "OK"
                 form.save(commit=True)
                 return render(request,self.template_name,data)
             else:
-                print "NOT OK"
                 return render(request,self.template_name,data)

@@ -1,5 +1,4 @@
 from django.db import models
-
 from projects.models import MainProject
 from todolist.models import todolistmodel
 
