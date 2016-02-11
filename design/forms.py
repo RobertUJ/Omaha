@@ -1,30 +1,36 @@
 from django import forms
-from django.db.models.fields.files import ImageField
 from django.forms import ModelForm, TextInput
 from django.forms.widgets import DateInput, Textarea, FileInput
 
-from design.models import DesignModelRequest, DesignModelResponse
+from design.models import DesignModelRequest, DesignModelResponse, DesignMailModel
 
 
 class DesignFormRequest(ModelForm):
     class Meta:
         model = DesignModelRequest
+        fields = '__all__'
         widgets = {
             'user_assigner':TextInput(attrs={'placeholder':'Usuario peticion'}),
-            'assignment':TextInput(attrs={'placeholder':'Tarea'}),
-            'assignment':Textarea(attrs={'placeholder':'Tarea'}),
-            'platform':TextInput(attrs={'placeholder':'Plataforma'}),
-            'type':TextInput(attrs={'placeholder':'Tipo'}),
+            'assignment':TextInput(attrs={'placeholder':'Peticion'}),
             'asked_date':DateInput(attrs={'placeholder':'Fecha peticion'}),
             'tentative_date':DateInput(attrs={'placeholder':'Fecha tentativa'}),
             'comment':Textarea(attrs={'placeholder':'Comentario'}),
         }
-        fields = '__all__'
+        labels = {
+            'user_assigner': 'Usuario peticion ',
+            'assignment': 'Peticion',
+            'platform':' plataforma',
+            'type':'tipo',
+            'asked_date': 'Fecha peticion',
+            'tentative_date': 'Fecha tentativa',
+            'comment': 'comentario',
+        }
 
 class DesignFormResponse(forms.ModelForm):
     class Meta:
         model = DesignModelResponse
         fields = [
+            'project',
             'designer_assigned',
             'user_assigner',
             'assignment',
@@ -33,18 +39,21 @@ class DesignFormResponse(forms.ModelForm):
             'type',
             'comment',
         ]
-        # fields = '__all__'
 
-# class DesignFormResponse(ModelForm):
-#     class Meta:
-#         model = DesignModelResponse
-#         widgets = {
-#             'designer_assigned':TextInput(attrs={'placeholder':'Disenador asignado'}),
-#             'user_assigner':TextInput(attrs={'placeholder':'Usuario peticion'}),
-#             'assignment':TextInput(attrs={'placeholder':'peticion'}),
-#             'files':ImageField(),
-#             'platform':TextInput(attrs={'placeholder':'Fecha peticion'}),
-#             'type':TextInput(attrs={'placeholder':'Fecha tentativa'}),
-#             'comment':Textarea(attrs={'placeholder':'Comentario'}),
-#         }
-#         fields = '__all__'
+from django.forms import ModelForm, TextInput, Textarea
+from contact.models import ContactModel
+
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = DesignMailModel
+        fields = '__all__'
+        widgets = {
+            'subject':TextInput(attrs={'placeholder':'Tema*'}),
+            'email':TextInput(attrs={'placeholder': 'Email*'}),
+        }
+        labels = {
+            'subjec':'Peticion ',
+            'email':'correo',
+        }
+

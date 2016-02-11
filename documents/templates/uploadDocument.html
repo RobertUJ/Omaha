@@ -8,11 +8,13 @@
  <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
+    {{ form.errors }}
      <br>
-    <input type="submit" value="Subir documento" class="submit-btn input-formmiddle">
+    <input type="submit" value="Subir documento">
 </form>
 
-{% endblock%}l
+{% endblock%}
+
 {% block contenido %}
     Subir documento
 {% endblock %}

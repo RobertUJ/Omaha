@@ -9,35 +9,21 @@
 </section>
 <!-- *******************************************FORMULARIO ***************************** -->
     <br>
-
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
     <div id="container">
-  <div id="row">
-
-  	<div id="left">
-        <p>Peticion:</p>
-        <p>{{ form.assignment }}</p>
-        <p>Plataforma:</p>
-        <p>{{ form.platform }}</p>
-        <p>Tipo:</p>
-        <p>{{ form.type }}</p>
-  		<p>Fecha de peticion:</p>
-        <p>{{ form.asked_date }}</p>
-        <p>Fecha tentativa:</p>
-        <p>{{ form.tentative_date }}</p>
-        <p>comentario:</p>
-        <p>{{ form.comment }}</p>
-  	</div>
-
-      <div id="right">
-        {% csrf_token %}
-          {{ form.errors }}
-  	</div>
-   </div>
-</div>
-<input class="btnAgregar" type="submit" value="Agregar proyecto">
+        <div id="row">
+            <div id="left">
+                <img src="{% static "/media/heart.png" %}" alt="" class="img-responsive"/>
+                {{ form.as_p }}
+            </div>
+            <div id="right">
+                {{ form.errors }}
+            </div>
+        </div>
+    </div>
+    <input class="btnAgregar" type="submit" value="Agregar perticion">
 </form>
-
 </body>
 {% endblock%}
 
