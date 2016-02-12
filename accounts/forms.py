@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django import forms
-from django.forms import ModelForm, TextInput, DateInput, PasswordInput, EmailInput
 from accounts.models import UserProfile
 
 
 class RegisterFormUser(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','password',)
+        fields = ('username','first_name','last_name','password','email')
+
 
         user = ['username']
         if User.objects.filter(username=user):
@@ -20,6 +20,14 @@ class RegisterFormUser(forms.ModelForm):
 
 
 class RegisterFormProfile(forms.ModelForm):
+    username = forms.CharField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    password = forms.CharField(
+        widget=forms.PasswordInput()
+    )
+    email = forms.CharField()
+
     class Meta:
         model = UserProfile
         fields = ('descripcion','photo',)
