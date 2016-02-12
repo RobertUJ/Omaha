@@ -16,7 +16,6 @@ class SpecificDesignView(View):
         project = get_object_or_404(MainProject, pk=kwargs['id'])
         designs = get_object_or_404(DesignModelRequest, pk=kwargs['id'])
         specificdesign = DesignModelRequest.objects.filter(project__designmodelrequest__comment__exact='Comentario1')
-        print specificdesign
         data = {
             'project': project,
             'designs': designs,

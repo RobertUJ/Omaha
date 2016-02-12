@@ -1,0 +1,78 @@
+.tickets{
+    margin: 0 auto;
+    width: 70%;
+    padding-bottom: 10px;
+    background-color: gainsboro;
+}
+.tickets_table {
+    margin: 0 auto;
+    width: 90%;
+    background-color: white;
+}
+.div_agregar_ticket{
+    padding: 15px;
+}
+.a_agregar_ticket{
+    background-color: dodgerblue;
+    padding: 10px;
+    color:white;
+    border-radius: 5%;
+}
+
+.tickets_available {
+    display: inline-block;
+    width: 900px;
+    height:100px;
+    border: 1px solid darkgrey;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-align: left;
+    overflow: hidden;
+    border-radius: 5%;
+}
+.tickets_available h3 {
+    background-color: dodgerblue;
+    color:white;
+    text-align: center;
+    font-family: roboto;
+}
+
+.tickets_available p {
+    font-family: roboto;
+    text-align: center;
+}
+.tickets_available p a {
+    color:dodgerblue;
+}
+
+.tickets_available:hover{
+    background-color: white;
+}
+.form_add_ticket{
+}
+.form_add_ticket label{
+    font-family: roboto;
+    box-sizing: border-box;
+}
+.form_add_ticket p{
+    background-color: #ffEEff;
+    clear: both;
+    width: 50%;
+    padding: 10px;
+}
+.form_add_ticket p label{
+    margin-left: 20px;
+}
+#id_description, #id_priority, #id_user_assigned, #id_user_reporter, .form_add_ticket select{
+    float: right;
+    width: 500px;
+}
+.btnAgregar{
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    background-color: mediumseagreen;
+    color: white;
+}
