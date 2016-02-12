@@ -20,13 +20,9 @@
             <th>Ver </th>
         </thead>
         <tbody>
-{#        {% for project in projects%}#}
-{#            <h4>{{ project.name}}!</h4>#}
-{#        {%  endfor %}#}
-
         {% for ticket in tickets %}
         <tr>
-            <td>{{ ticket.project}}</td>
+            <td>{{ ticket.name}}!</td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.user_assigned}}</td>
             <td>{{ ticket.user_reporter}}</td>

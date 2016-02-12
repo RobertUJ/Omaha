@@ -7,41 +7,13 @@
         <a class="a_ver_proyectos" href="{% url "IndexView" %}">Volver a proyectos</a>
     </section>
 {#------------------------------------------Formulario-----------------------------------------------------#}
-<form method="POST" action="">
-<div id="container">
-  <div id="row">
+<br>
+    <form method="POST" action="">
 
-  	<div id="left">
-  		<p>Nombre:</p>
-  		<p>Fecha de incicio:</p>
-        <p>Fecha final:</p>
-        <p>URL:</p>
-        <p>Dominio:</p>
-        <p>Servidor asignado:</p>
-        <p>Tipo:</p>
-        <p>Cliente:</p>
-        <p>Plataforma:</p>
-        <p>Prioridad:</p>
-        <p>Usuarios:</p>
-  	</div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.errors }}
 
-      <div id="right">
-        {% csrf_token %}
-        <p>{{ form.name }}</p>
-        <p>{{ form.start_date }}</p>
-        <p>{{ form.due_date }}</p>
-        <p>{{ form.url }}</p>
-        <p>{{ form.domain }}</p>
-        <p>{{ form.server_assigned }}</p>
-        <p>{{ form.type }}</p>
-        <p>{{ form.client }}</p>
-        <p>{{ form.platform }}</p>
-        <p>{{ form.priority }}</p>
-        <p>{{ form.users }}</p>
-          {{ form.errors }}
-  	</div>
-   </div>
-</div>
 <input class="btnAgregar" type="submit" value="Agregar proyecto">
 </form>
 

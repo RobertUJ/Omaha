@@ -9,7 +9,8 @@
 </section>
 <!-- *******************************************Menu principal ***************************** -->
 <br>
-    <h1 style="text-align: center;">{{ project.name }}</h1>
+<h2 style="text-align: center;">{{ project.name }} Detalles</h2>
+
 <table border="0">
     <thead>
         <th>Fecha de incicio:</th>
@@ -19,7 +20,6 @@
         <th>Servidor:</th>
         <th>Cliente:</th>
         <th>Plataforma:</th>
-        <th>Prioridad:</th>
         <th>Usuarios:</th>
     </thead>
     <tbody>
@@ -28,16 +28,17 @@
             <td>{{ project.due_date }}</td>
             <td>{{ project.url }}</td>
             <td>{{ project.domain }}</td>
-            <td>{{ project.server_assigned }}</td>
+            <td>{{ project.server }}</td>
             <td>{{ project.client }}</td>
             <td>{{ project.platform }}</td>
-            <td>{{ project.priority }}</td>
             <td>{{ project.users }}</td>
         </tr>
     </tbody>
 </table>
-    <br>
-    <h1 style="text-align: center">Lista de pendientes</h1>
+
+<br>
+<h2 style="text-align: center">Lista de pendientes</h2>
+
 <table border="0">
     <thead>
         <th>Lista</th>
@@ -55,12 +56,79 @@
             <td>{{ todolist.start_date }}</td>
             <td>{{ todolist.due_date }}</td>
             <td>{{ todolist.user_assigner }}</td>
-            <td><a href="/{{ project.name }}/{{todolist.id}}">Ver</a> </td>
+            <td><a href="/lista.{{ project.name }}/{{todolist.id}}">Ver</a> </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
+<br>
+<h2 style="text-align: center">Tickets</h2>
+
+<table border="0">
+    <thead>
+        <th>Proyecto</th>
+        <th>Descripcion</th>
+        <th>Usuario peticion</th>
+        <th>Usuario asignado</th>
+        <th>Prioridad</th>
+        <th>Ver ticket</th>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.project}}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.user_reporter }}</td>
+            <td>{{ ticket.user_assigned }}</td>
+            <td>{{ ticket.priority }}</td>
+            <td><a href="/{{ project.name }}/{{ticket.id}}">Ver</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<h2 style="text-align: center">Diseno pendientes</h2>
+
+<table border="0">
+    <thead>
+        <th>Peticion</th>
+        <th>Plataforma</th>
+        <th>Tipo</th>
+        <th>Detalles</th>
+    </thead>
+    <tbody>
+        {% for designRequest in designRequests %}
+        <tr>
+            <td>{{ designRequest.assignment }}</td>
+            <td>{{ designRequest.platform}}</td>
+            <td>{{ designRequest.type}}</td>
+            <td><a href="/diseno.{{designRequest.id}}">Ver</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<h2 style="text-align: center">Documentos relevantes</h2>
+
+<br>
+{% for imgDocuments in imgDocuments %}
+    <div class="documentos">
+        <h3>Omaha</h3>
+        <figure><img src="{{ MEDIA_URL }}{{ imgDocuments.images }}" height="100px"alt="Documentos"></figure>
+        <p><a href="download">Descargar</a></p>
+    </div>
+{% endfor %}
+
+{% for imgDesign in imgDesigns %}
+    <div class="documentos">
+        <h3>Diseno</h3>
+        <figure><img src="{{ MEDIA_URL }}{{ imgDesign.files }}" height="100px"alt="Documentos"></figure>
+        <p><a href="download">Descargar</a></p>
+    </div>
+{% endfor %}
 {% endblock %}
 
 {% block contenido %}
