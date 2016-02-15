@@ -1,3 +1,4 @@
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
@@ -20,18 +21,29 @@ class RegisterView(FormView):
         return render(request, self.template_name, ctx)
 
     def post(self, request, *args, **kwargs):
-        formUser = RegisterFormUser(request.POST)
-        formProfile = RegisterFormProfile(request.POST)
+        # formUser = RegisterFormUser(request.POST)
+        formProfile = RegisterFormProfile(request.POST, request.FILES)
         ctx = {
-            'formusr': formUser,
             'formprofile':formProfile
         }
-        if formUser.is_valid() and formProfile.is_valid():
-            formUser.set_password(formUser.Meta.password)
-            new_user = formUser.save()
+        if formProfile.is_valid():
+            username = formProfile.cleaned_data["username"]
+            password = formProfile.cleaned_data["password"]
+            first_name = formProfile.cleaned_data["first_name"]
+            last_name = formProfile.cleaned_data["last_name"]
+            email = formProfile.cleaned_data["email"]
+
+            new_user = User.objects.create_user(username, email, password)
+
+            new_user.last_name = last_name
+            new_user.first_name = first_name
+            new_user.save()
+
             new_profile = formProfile.save(commit=False)
             new_profile.user = new_user
             new_profile.save()
+
+
             return render(request,self.template_name,ctx)
         else:
             return render(request,self.template_name,ctx)

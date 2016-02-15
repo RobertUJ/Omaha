@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Registro de usuario{% endblock title %}
-
 {% block content %}
+{% csrf_token %}
     <div class="row">
         <div class="col-md-6 col-sm-offset-3">
             <div class="page-header">
@@ -11,14 +11,19 @@
                     {{ formprofile.errors }}
             </div>
             <form method="post" action="" enctype="multipart/form-data">
-                <div id="register">
+
                     {% csrf_token %}
-                    {{ formusr.as_p }}
+
                     {{ formprofile.as_p }}
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-                    <a href="/inicio_de_sesion" target="_self"> <input type="button" name="boton" value="Regresar" /></a>
-                </div>
+
+
+
+
+                <input type="submit" value="Registar" class="btn btn-primary">
+
             </form>
+
+            <a href="/inicio_de_sesion" target="_self"> regresar </a>
         </div>
     </div>
 {% endblock content %}

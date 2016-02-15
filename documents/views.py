@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from design.models import DesignModelResponse
 from documents.forms import DocumentForm
@@ -8,6 +10,7 @@ from documents.models import documentsModel
 class DocumentsView(View):
     template_name = "documents.html"
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         imgDocumentos = documentsModel.objects.all
         imgDisenos = DesignModelResponse.objects.all
@@ -23,6 +26,7 @@ class DocumentsView(View):
 class UploadDocumentView(View):
     template_name = "uploadDocument.html"
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         form = DocumentForm()
         data = {
@@ -30,6 +34,8 @@ class UploadDocumentView(View):
         }
         return render(request,self.template_name,data)
 
+
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def post(self,request,*args,**kwargs):
             form = DocumentForm(request.POST or None, request.FILES or None)
             data = {
@@ -52,6 +58,7 @@ class UploadDocumentView(View):
             else:
                 return render(request,self.template_name,data)
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def validate_file(self, file_name):
         if str(file_name).endswith('.pdf'):
             return 1

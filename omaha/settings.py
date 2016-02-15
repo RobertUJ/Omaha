@@ -74,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'omaha',
         'USER': 'root',
-        'PASSWORD': 'ventamovil'
+        'PASSWORD': 'root'
     }
 }
 APP_NAME = "omaha"
