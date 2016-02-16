@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
-from accounts.forms import RegisterProfileForm, RegisterUserForm, EditAccountForm
+from accounts.forms import RegisterProfileForm, RegisterUserForm
 from accounts.models import UserProfile
 
 class RegisterView(FormView):
