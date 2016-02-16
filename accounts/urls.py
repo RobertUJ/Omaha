@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     url(r'^registro/$',views.RegisterView.as_view(), name='accounts.register'),
-    url(r'^perfil/$',views.ProfileView.as_view(),name='user.profile'),
+    url(r'^perfil/$',views.ProfileView.as_view(),name='user.account'),
 ]

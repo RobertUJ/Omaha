@@ -41,7 +41,7 @@ class LoginView(FormView):
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        return HttpResponseRedirect('/modulos')
+                        return HttpResponseRedirect('/index')
                         print "Te has identificado de modo correcto"
                     else:
                         mensaje = "Tu usuario esta inactivo"

@@ -4,7 +4,7 @@ from django import forms
 from accounts.models import UserProfile
 
 
-class RegisterFormUser(forms.ModelForm):
+class RegisterUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username','first_name','last_name','password','email')
@@ -19,7 +19,7 @@ class RegisterFormUser(forms.ModelForm):
             raise forms.ValidationError('Ya existe un email igual en la db.')
 
 
-class RegisterFormProfile(forms.ModelForm):
+class RegisterProfileForm(forms.ModelForm):
     username = forms.CharField()
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -32,6 +32,14 @@ class RegisterFormProfile(forms.ModelForm):
         model = UserProfile
         fields = ('descripcion','photo',)
 
+# class EditAccountForm(forms.ModelForm):
+#     class Meta:
+#         model = UserProfile
+#         fields = '__all__'
+#
+#     def __init__(self, user, *args, **kwargs):
+#
+#         self.user = User.get_profile()
 
     #     user = forms.CharField(min_length=5)
     #     email = forms.EmailField()

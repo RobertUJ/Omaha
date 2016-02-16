@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
-from accounts.forms import RegisterFormProfile, RegisterFormUser
+from accounts.forms import RegisterProfileForm, RegisterUserForm, EditAccountForm
 from accounts.models import UserProfile
 
 class RegisterView(FormView):
@@ -12,8 +12,8 @@ class RegisterView(FormView):
 
 
     def get(self, request, *args, **kwargs):
-        formUser = RegisterFormUser()
-        formProfile = RegisterFormProfile()
+        formUser = RegisterUserForm()
+        formProfile = RegisterProfileForm()
         ctx = {
             'formusr': formUser,
             'formprofile':formProfile
@@ -21,8 +21,7 @@ class RegisterView(FormView):
         return render(request, self.template_name, ctx)
 
     def post(self, request, *args, **kwargs):
-        # formUser = RegisterFormUser(request.POST)
-        formProfile = RegisterFormProfile(request.POST, request.FILES)
+        formProfile = RegisterProfileForm(request.POST, request.FILES)
         ctx = {
             'formprofile':formProfile
         }
@@ -42,7 +41,8 @@ class RegisterView(FormView):
             new_profile = formProfile.save(commit=False)
             new_profile.user = new_user
             new_profile.save()
-
+            message = 'Se agrego correctamente'
+            ctx['message']=message
 
             return render(request,self.template_name,ctx)
         else:
@@ -51,15 +51,14 @@ class RegisterView(FormView):
 class ProfileView(FormView):
     template_name = "profile.html"
 
-    @method_decorator(login_required(login_url='/inicio_de_sesion'))
-    def get(self, request, *args, **kwargs):
-        usermodel = UserProfile.objects.all()
-        usermodel2 = User.objects.all()
-        ctx = {
-            'model2':usermodel2,
-            'model':usermodel,
-        }
-        return render(request, self.template_name, ctx)
+    # @method_decorator(login_required(login_url='/inicio_de_sesion'))
+    # def get(self, request, *args, **kwargs):
+    #     # formAccount = EditAccountForm(request.user, request.POST)
+    #     # if formAccount.is_valid():
+    #     #     ctx = {'formAccount':formAccount}
+    #     #     return render(request,self.template_name,ctx)
+
+
 
     def post(self, request, *args, **kwargs):
         usermodel = UserProfile.objects.all()

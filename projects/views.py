@@ -17,13 +17,11 @@ class IndexView(View):
 
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
-<<<<<<< HEAD
-        project = MainProject.objects.all()
+        #project = MainProject.objects.all()
         print "-"*50
-        print project
-=======
+        #print project
         project = MainProject.objects.order_by('due_date')
->>>>>>> 650d5e1e5550bf772f1817e16505c574f361bae0
+
         data = {
             'project': project,
         } 
