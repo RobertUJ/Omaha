@@ -2,38 +2,28 @@
 {% load staticfiles %}
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
-
-
-<!-- *******************************************MENU PRINCIPAL***************************** -->
-    <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "AddTicketView" %}">Agregar ticket</a>
-</section>
 <!-- *******************************************FORMULARIO ***************************** -->
 <br>
-{% csrf_token %}
-    <table>
-        <thead>
-            <th>Proyecto</th>
-            <th>Ticket</th>
-            <th>Usuario asignado</th>
-            <th>Usuario peticion</th>
-            <th>Ver </th>
-        </thead>
-        <tbody>
-        {% for ticket in tickets %}
-        <tr>
-            <td>{{ ticket.name}}!</td>
-            <td>{{ ticket.description }}</td>
-            <td>{{ ticket.user_assigned}}</td>
-            <td>{{ ticket.user_reporter}}</td>
-            <td>Ver</td>
-        </tr>
-        </tbody>
-        {% endfor %}
-    </table>
+<section class="tickets">
+    <section class="tickets_menu">
+        <div class="div_agregar_ticket">
+            <a class="a_agregar_ticket" href="{% url "AddTicketView" %}">Agregar ticket</a>
+        </div>
+    </section>
+
+    {% for ticket in tickets %}
+    <section class="tickets_available">
+    {% csrf_token %}
+        <h3>{{ ticket.description }}</h3>
+        <p><b>Descripcion:</b> {{ ticket.user_reporter }}</p>
+        <p><b>Usuario asignado:</b> {{ ticket.user_assigned }}</p>
+        <p><b>Prioridad:</b> {{ ticket.priority }}</p>
+    </section>
+    {% endfor %}
+
+</section>
 
 {% endblock %}
-
 {% block contenido %}
     Tickets
 {% endblock %}

@@ -11,7 +11,6 @@ from tickets.models import ticketsModel
 from todolist.models import todolistmodel
 
 
-
 class IndexView(View):
     template_name = "index.html"
 
@@ -30,8 +29,8 @@ class IndexView(View):
 
 class viewProject(View):
     template_name = "viewProject.html"
-    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
 
+    @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         project = get_object_or_404(MainProject, name=kwargs['name'])
         todolist = todolistmodel.objects.filter(project=project)
@@ -39,7 +38,6 @@ class viewProject(View):
         designRequests = DesignModelRequest.objects.filter(project=project)
         imgDocuments = documentsModel.objects.filter(project=project)
         imgDesign = DesignModelResponse.objects.filter(project=project)
-        print todolist
 
         data = {
              'todolist': todolist,
@@ -54,6 +52,7 @@ class viewProject(View):
 
 class addProject(View):
     template_name = "addProject.html"
+
     def get(self, request, *args, **kwargs):
         form = addProjectForm()
         data = {
@@ -68,10 +67,9 @@ class addProject(View):
             }
             if form.is_valid():
                 form.save(commit=True)
-                return render(request,self.template_name,data)
+                return render(request, self.template_name, data)
             else:
-                # print form.e
-                return render(request,self.template_name,data)
+                return render(request, self.template_name, data)
 
 
 

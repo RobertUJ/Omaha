@@ -17,14 +17,14 @@
 {% for pdf in pdfDocumentos %}
     <div class="PDF">
         <h3>{{ pdf.name }}</h3>
-        <p><a href="{{ MEDIA_URL }}/ADS.pdf">Ver</a></p>
+        <p><a href="{{ MEDIA_URL }}/ADS.pdf">Ver PDF</a></p>
     </div>
 {% endfor %}
 
 {% for imgDocumento in imgDocumentos %}
     <div class="documentos">
         <h3>{{ imgDocumento.name }}</h3>
-        <figure><img src="{{ MEDIA_URL }}{{ imgDocumento.images }}" height="100px"alt="Ver PDF"></figure>
+        <figure><img src="{{ MEDIA_URL }}{{ imgDocumento.images }}" height="100px"alt="Ver"></figure>
         <p><a href="{{ MEDIA_URL }}{{ imgDocumento.images }}">Ver</a></p>
     </div>
 {% endfor %}
@@ -33,7 +33,7 @@
     <div class="imagenes">
         <h3>{{ imgDiseno.assignment }}</h3>
         <figure><img src="{{ MEDIA_URL }}{{ imgDiseno.files }}" height="100px"alt="Documentos"></figure>
-        <p><a href="download">Descargar</a></p>
+        <p><a href="{{ MEDIA_URL }}{{ imgDocumento.images }}">Descargar</a></p>
     </div>
 {% endfor %}
 
