@@ -4,20 +4,10 @@ from django import forms
 from accounts.models import UserProfile
 
 
-class RegisterUserForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','password','email')
-
-
-        user = ['username']
-        if User.objects.filter(username=user):
-            raise forms.ValidationError("Nombre de usuario ya registrado.")
-
-        email = ['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError('Ya existe un email igual en la db.')
-
+        fields = ('username','first_name','last_name','email',)
 
 class RegisterProfileForm(forms.ModelForm):
     username = forms.CharField()

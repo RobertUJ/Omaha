@@ -1,10 +1,12 @@
+import user
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import Http404
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
-from accounts.forms import RegisterProfileForm, RegisterUserForm
+from accounts.forms import RegisterProfileForm, UserForm
 from accounts.models import UserProfile
 
 class RegisterView(FormView):
@@ -12,10 +14,8 @@ class RegisterView(FormView):
 
 
     def get(self, request, *args, **kwargs):
-        formUser = RegisterUserForm()
         formProfile = RegisterProfileForm()
         ctx = {
-            'formusr': formUser,
             'formprofile':formProfile
         }
         return render(request, self.template_name, ctx)
@@ -51,12 +51,18 @@ class RegisterView(FormView):
 class ProfileView(FormView):
     template_name = "profile.html"
 
-    # @method_decorator(login_required(login_url='/inicio_de_sesion'))
-    # def get(self, request, *args, **kwargs):
-    #     # formAccount = EditAccountForm(request.user, request.POST)
-    #     # if formAccount.is_valid():
-    #     #     ctx = {'formAccount':formAccount}
-    #     #     return render(request,self.template_name,ctx)
+    @method_decorator(login_required(login_url='/inicio_de_sesion'))
+    def get(self, request, *args, **kwargs):
+      try:
+          user_form = UserForm(instance=request.user)
+          if user_form.is_valid():
+              user = user_form.save(commit=False)
+              user.save()
+      except User.DoesNotExist:
+          raise Http404
+      ctx = {'user_form':user_form}
+      return render(request,self.template_name,ctx)
+
 
 
 
