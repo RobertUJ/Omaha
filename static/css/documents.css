@@ -1,16 +1,26 @@
 /*------------------------------------------PROJECTS/index--------------------------------*/
-.documentos, .imagenes, .PDF{
+.section_documents{
+    width: 80%;
+    margin:  0 auto;
+    background-color: #EEEEEE;
+    border: 2px solid #AAAAAA;
+}
+.PDF{
+    width: 97%;
+    background-color: white;
+    margin-left: 15px;
+}
+.documentos, .imagenes{
     display: inline-block;
     width: 150px;
-    height:200px;
+    height:150px;
     border: 1px solid darkgrey;
-    margin-left: 10px;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
+    margin-left: 15px;
     line-height: 1.3;
     text-align: left;
     overflow: hidden;
     border-radius: 5%;
+    background-color: white;
 }
 .documentos h3, .imagenes h3, .PDF h3{
     background-color: gray;

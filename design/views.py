@@ -15,13 +15,12 @@ class SpecificDesignView(View):
     def get(self, request, *args, **kwargs):
         project = get_object_or_404(MainProject, pk=kwargs['id'])
         designs = get_object_or_404(DesignModelRequest, pk=kwargs['id'])
-        specificdesign = DesignModelRequest.objects.filter(project__designmodelrequest__comment__exact='Comentario1')
         data = {
             'project': project,
             'designs': designs,
-            'specificdesign': specificdesign,
         }
         return render(request, self.template_name, data)
+
 
 class DesignView(View):
     template_name = "design.html"
@@ -37,6 +36,7 @@ class DesignView(View):
 
 class DesignRequestView(View):
     template_name = "designrequest.html"
+
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         form = DesignFormRequest()
@@ -46,35 +46,27 @@ class DesignRequestView(View):
         return render(request,self.template_name,data)
 
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
-    def post(self,request,*args,**kwargs):
+    def post(self, request, *args, **kwargs):
             form = DesignFormRequest(request.POST)
             data = {
                 'form': form,
             }
             if form.is_valid():
-                form.save(commit=True)
-                return render(request,self.template_name,data)
-            else:
-                return render(request,self.template_name,data)
-            form = DesignFormRequest(request.POST)
-            if form.is_valid():
-                form.save(commit=True)
-            form = DesignFormRequest(request.POST)
-            if form.is_valid():
-                form.save(commit=True)
-
+                form.save(commit=False)
                 send_mail("Peticion diseno " + str(request.POST.get('user_assigner')),
-                      "PETICION: " + str(request.POST.get('assignment')) +" PLATAFORMA: "  + str(request.POST.get('platform'))
+                    "PETICION: " + str(request.POST.get('assignment')) +" PLATAFORMA: "  + str(request.POST.get('platform'))
                       + " TIPO: " + str(request.POST.get('type')) + " COMENTARIO: " + str(request.POST.get('comment')),
                       request.POST.get('user_assigner'), ['erickhp12@gmail.com'])
 
-            data = {
-                'form': form,
-            }
-            return render(request, self.template_name, data)
+                return render(request, self.template_name,data)
+            else:
+                return render(request,self.template_name,data)
+
+
 
 class DesignResponseView(View):
     template_name = "designresponse.html"
+
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
         form = DesignFormResponse()

@@ -13,5 +13,6 @@ class DocumentForm(ModelForm):
         labels = {
             'project': 'Proyectos',
             'name': 'nombre ',
+            'type': 'tipo ',
             'images': 'imagenes',
         }

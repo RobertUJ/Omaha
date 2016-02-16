@@ -10,12 +10,12 @@ def url(filename):
 
 
 class documentsModel(models.Model):
-    TYPE_CHOICES = (('1', 'pdf'), ('2', 'docx'),('3', 'png'),('4', 'jpg'),('5', 'gif'),)
+    TYPE_CHOICES = (('1', 'pdf'), ('2', 'docx'),('3', 'image'))
     project = models.ManyToManyField(MainProject)
     name = models.CharField(max_length=100, null=True, blank=True)
     type = models.CharField(max_length=4, choices=TYPE_CHOICES)
     images = models.FileField(null=True, blank=True)
-    files = models.FileField(null=True, blank=True)
+    files = models.FileField(null=True,blank=True)
 
     def __unicode__(self):
         return "%s" % self.name

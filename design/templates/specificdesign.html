@@ -3,19 +3,9 @@
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
 
-<h1>DISENO selecciona una opcion del menu </h1>
-    <br>
-<!-- ******************************l*************MENU PRINCIPAL***************************** -->
-    <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "DesignView" %}">Volver a diseno</a>
-    <a class="a_agregar_proyectos" href="{% url "DesignResponseView" %}">Respuesta diseno</a>
-</section>
-<!-- *******************************************FORMULARIO ***************************** -->
-<br>
-<h2>
-{% for design in specificdesign %}
-    Diseno {{ design.platform}} </h2>
-{% endfor%}
+<h1>DISENO selecciona una opcion del menu </h1><br>
+<h2>Diseno {{ designs.assignment}} </h2>
+
 {% csrf_token %}
     <table border="0">
         <thead>
@@ -29,19 +19,17 @@
             <th>Comentario</th>
         </thead>
         <tbody>
-        {% for design in specificdesign %}
         <tr>
-            <td>{{ design.project }}</td>
-            <td>{{ design.user_assigner }}</td>
-            <td>{{ design.assignment }}</td>
-            <td>{{ design.platform }}</td>
-            <td>{{ design.type }}</td>
-            <td>{{ design.asked_date }}</td>
-            <td>{{ design.tentative_date }}</td>
-            <td>{{ design.comment }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ designs.user_assigner }}</td>
+            <td>{{ designs.assignment }}</td>
+            <td>{{ designs.platform }}</td>
+            <td>{{ designs.type }}</td>
+            <td>{{ designs.asked_date }}</td>
+            <td>{{ designs.tentative_date }}</td>
+            <td>{{ designs.comment }}</td>
         </tr>
         </tbody>
-        {% endfor %}
     </table>
 </body>
 {% endblock%}

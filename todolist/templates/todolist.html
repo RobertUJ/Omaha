@@ -4,11 +4,6 @@
 {% block content %}
 
 
-<!-- *******************************************MENU PRINCIPAL***************************** -->
-    <section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "AddTodoListView" %}">Agregar Lista</a>
-</section>
-<!-- *******************************************FORMULARIO ***************************** -->
 <br>
 {% csrf_token %}
     <table border="0">
@@ -22,11 +17,14 @@
         <tr>
             <td>{{ todo.name }}</td>
             <td>{{ todo.description }}</td>
-            <td><a href={{ todo.id }}>Ver</a></td>
+            <td><a href="/lista/{{todo.id}}">Ver</a> </td>
         </tr>
         </tbody>
         {% endfor %}
     </table>
+<section class="addItem">
+    <a class="a_agregar_proyectos" href="{% url "AddTodoListView" %}">Agregar Lista</a>
+</section>
 
 {% endblock %}
 

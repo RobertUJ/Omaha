@@ -3,11 +3,6 @@
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
 
-<!-- *********************************Menu proyectos**********************************-->
-<section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "addProjectView" %}">Agregar proyecto</a>
-</section>
-<!-- *******************************************Menu principal ***************************** -->
     <br>
 
    {% for project in project %}
@@ -19,6 +14,11 @@
         <p><a href="/proyecto.{{project.name}}">Ver detalles</a></p>
     </div>
     {% endfor %}
+
+<div class="addItem">
+    <a href="{% url "addProjectView" %}">Agregar proyecto</a>
+</div>
+
 </body>
 {% endblock %}
 

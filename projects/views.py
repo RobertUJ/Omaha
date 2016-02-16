@@ -28,6 +28,7 @@ class viewProject(View):
 
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs):
+        # project = get_object_or_404(MainProject, name=kwargs['name'])
         project = get_object_or_404(MainProject, name=kwargs['name'])
         todolist = todolistmodel.objects.filter(project=project)
         tickets = ticketsModel.objects.filter(project=project)

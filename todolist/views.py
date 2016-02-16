@@ -14,10 +14,8 @@ class TodoListView(View):
     @method_decorator(login_required(login_url='/inicio_de_sesion/'))
     def get(self, request, *args, **kwargs): 
         todo = todolistmodel.objects.all()
-        # tasks = get_object_or_404(tasksModel, pk=kwargs['id'])
         data = {
             'todo': todo,
-            # 'tasks': tasks,
         }
 
         return render(request, self.template_name, data)
@@ -27,11 +25,11 @@ class SpecificTodoListView(View):
     template_name = "specifictodo.html"
 
     def get(self, request, *args, **kwargs):
-        project = get_object_or_404(MainProject, name=kwargs['name'])
+        # project = get_object_or_404(MainProject, name=kwargs['name'])
         todolist = get_object_or_404(todolistmodel, pk=kwargs['id'])
         specifictask = tasksModel.objects.filter(todolist=todolist) 
         data = {
-            'project': project,
+            # 'project': project,
             'todolist': todolist,
             'specifictask': specifictask,
         }
