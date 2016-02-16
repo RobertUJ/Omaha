@@ -3,10 +3,6 @@
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
 
-<!-- *********************************Menu proyectos**********************************-->
-<section class="menu_proyectos">
-    <a class="a_agregar_proyectos" href="{% url "IndexView" %}">Volver a proyectos</a>
-</section>
 <!-- *******************************************Menu principal ***************************** -->
 <br>
 <h2 style="text-align: center;">{{ project.name }} Detalles</h2>
@@ -45,7 +41,6 @@
         <th>Descripcion</th>
         <th>fecha de inicio</th>
         <th>Fecha final</th>
-        <th>Usuario asignado</th>
         <th>Ver tareas</th>
     </thead>
     <tbody>
@@ -55,19 +50,17 @@
             <td>{{ todolist.description }}</td>
             <td>{{ todolist.start_date }}</td>
             <td>{{ todolist.due_date }}</td>
-            <td>{{ todolist.user_assigner }}</td>
-            <td><a href="/lista.{{ project.name }}/{{todolist.id}}">Ver</a> </td>
+            <td><a href="/lista/{{todolist.id}}">Ver</a> </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<div class="addItem"><a href="{% url "AddTodoListView" %}">Agregar lista</a></div>
 
-<br>
 <h2 style="text-align: center">Tickets</h2>
 
 <table border="0">
     <thead>
-        <th>Proyecto</th>
         <th>Descripcion</th>
         <th>Usuario peticion</th>
         <th>Usuario asignado</th>
@@ -77,7 +70,6 @@
     <tbody>
         {% for ticket in tickets %}
         <tr>
-            <td>{{ ticket.project}}</td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.user_reporter }}</td>
             <td>{{ ticket.user_assigned }}</td>
@@ -88,7 +80,8 @@
     </tbody>
 </table>
 
-<br>
+<div class="addItem"><a href="{% url "AddTicketView" %}">Agregar ticket</a> </div>
+
 <h2 style="text-align: center">Diseno pendientes</h2>
 
 <table border="0">
@@ -110,7 +103,8 @@
     </tbody>
 </table>
 
-<br>
+<div class="addItem"><a href="{% url "DesignRequestView" %}">Agregar diseno</a> </div>
+
 <h2 style="text-align: center">Documentos relevantes</h2>
 
 <br>

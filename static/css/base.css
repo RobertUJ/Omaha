@@ -9,32 +9,39 @@ img { border: none; }
   margin: 0 auto;
 }
 
-
-.user_info, .main_title, .a_menu{
+.main_title, .a_menu{
 	border: 1px solid #777;
 }
 
-.user_info{
-    height: 40px;
-}
-.user_info h2{
-    text-align: center;
-    float: left;
-    width: 88%;
-}
-.user_info a{
-    float: right;
-    width: 10%;
-}
 .main_title{
-    height:100px;
+    height:50px;
+    background-color: cornflowerblue;
+}
+h2{
+    font-family: roboto;
+    text-align: center;
 }
 .main_title h2{
-    margin-top: 30px;
-    text-align: center;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: white;
+    font-family: roboto;
 }
+.main_title p{
+    margin-top: 10px;
+    float: right;
+    color: white;
+    font-size: 20px;
+    font-family: roboto;
+}
+
 .a_menu{
     height: 30px;
+    display: block;
+}
+.a_menu ul{
+    margin-top: 5px;
 }
 .a_menu li{
     display: inline;
@@ -43,12 +50,14 @@ img { border: none; }
     text-decoration: none;
     color: black;
     font-weight: bold;
+    font-family: roboto;
     padding: 8px;
 }
 .a_menu a:hover{
     background-color: gray;
     color: white;
 }
+
 #container {
         display: table;
     }
@@ -71,7 +80,7 @@ img { border: none; }
 	padding-left: 20px;
     }
 #right p:hover{
-    background-color: dodgerblue;
+    background-color: cornflowerblue;
     color: white;
 }
 a{
@@ -86,7 +95,7 @@ table{
 }
 
 table thead th{
-    background-color: darkcyan;
+    background-color: dodgerblue;
     color: white;
 }
 table tbody td{
@@ -127,4 +136,16 @@ table tbody td{
 .proyecto:hover{
     background-color: gainsboro;
 }
+<<<<<<< HEAD
 /*-----------------------------------------------------------------------------------------------*/
+=======
+.addItem{
+    width: 130px;
+    background-color: mediumseagreen;
+    padding: 5px;
+    margin-top: 10px;
+}
+.addItem a{
+    color: white
+}
+>>>>>>> 760a5a34fef130431c595b49a5ca4d1d5a149d43

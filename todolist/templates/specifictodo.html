@@ -3,12 +3,6 @@
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
 
-    <!-- *******************************************MENU PRINCIPAL***************************** -->
-    <section class="menu_proyectos">
-        <a class="a_agregar_proyectos" href="{% url "TodoListView" %}">Voler a Listas</a>
-        <a class="a_agregar_proyectos" href=/tareas.{{todolist.id}}>Agregar Tarea</a>
-    </section>
-    <!-- *******************************************FORMULARIO ***************************** -->
 <br>
 <h2>{{ todolist.name }} > Tareas</h2>
 {% csrf_token %}
@@ -34,7 +28,10 @@
         </tbody>
         {% endfor %}
     </table>
+
+    <div class="addItem"><a class="a_agregar_proyectos" href=/tareas.{{todolist.id}}>Agregar Tarea</a></div>
 </body>
+
 {% endblock%}
 
 {% block contenido %}
