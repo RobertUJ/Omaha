@@ -7,8 +7,9 @@ from accounts.models import UserProfile
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','password','email')
+        fields = ('username','first_name','last_name','email',)
 
+<<<<<<< HEAD
         user = ['username']
         if User.objects.filter(username=user):
             raise forms.ValidationError("Nombre de usuario ya registrado.")
@@ -18,6 +19,8 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError('Ya existe un email igual en la db.')
 
 
+=======
+>>>>>>> 6a89ede279fa25ca4913de701889e8b6ccc29ab5
 class RegisterProfileForm(forms.ModelForm):
     username = forms.CharField()
     first_name = forms.CharField()
@@ -31,6 +34,14 @@ class RegisterProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('descripcion','photo',)
 
+# class EditAccountForm(forms.ModelForm):
+#     class Meta:
+#         model = UserProfile
+#         fields = '__all__'
+#
+#     def __init__(self, user, *args, **kwargs):
+#
+#         self.user = User.get_profile()
 
     #     user = forms.CharField(min_length=5)
     #     email = forms.EmailField()

@@ -136,6 +136,9 @@ table tbody td{
 .proyecto:hover{
     background-color: gainsboro;
 }
+<<<<<<< HEAD
+/*-----------------------------------------------------------------------------------------------*/
+=======
 .addItem{
     width: 130px;
     background-color: mediumseagreen;
@@ -145,3 +148,4 @@ table tbody td{
 .addItem a{
     color: white
 }
+>>>>>>> 760a5a34fef130431c595b49a5ca4d1d5a149d43

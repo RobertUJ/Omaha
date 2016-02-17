@@ -5,6 +5,7 @@
 
 {#------------------------------------------Formulario-----------------------------------------------------#}
 {% block content %}
+<<<<<<< HEAD
   <h3 class="title profile">Informacion Basica</h3>
   <dl>
     <dt><strong>Usuario:</strong></dt>
@@ -22,6 +23,20 @@
       <dt><strong>Apellido:</strong></dt>
       <dd>{{ user.last_name }}</dd>
     {% endif %}
+=======
+<div class="row">
+{% csrf_token %}
+    <h1>Este es tu perfil</h1>
+    {% if user.is_authenticated %}
+        {{ user_form.errors }}
+        {{ user_form.non_fields_errors }}
+    {% endif %}
+        {{ user_form.as_p }}
+    <section>
+        <h3><a href="#">editar</a></h3>
+    </section>
+</div>
+>>>>>>> 6a89ede279fa25ca4913de701889e8b6ccc29ab5
 
     <dt><strong>Descripcion:</strong></dt>
     <dd>{{ profile.descripcion }}</dd>

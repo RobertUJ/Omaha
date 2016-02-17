@@ -3,7 +3,6 @@ from platforms.models import PlatformsModel
 
 
 class MainProject(models.Model):
-    PRIORITY = (('1', 'Para ayer'),('2', 'Urgente'),('3', 'Para hoy'),)
     name = models.CharField(max_length=100)
     start_date = models.DateField()
     due_date = models.DateField()

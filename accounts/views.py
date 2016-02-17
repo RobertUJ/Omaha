@@ -1,3 +1,4 @@
+import user
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -14,16 +15,21 @@ class RegisterView(FormView):
     template_name = "register.html"
 
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         formUser = UserForm()
+=======
+>>>>>>> 6a89ede279fa25ca4913de701889e8b6ccc29ab5
         formProfile = RegisterProfileForm()
         ctx = {
-            'formusr': formUser,
             'formprofile':formProfile
         }
         return render(request, self.template_name, ctx)
 
     def post(self, request, *args, **kwargs):
+<<<<<<< HEAD
         # formUser = RegisterFormUser(request.POST)
+=======
+>>>>>>> 6a89ede279fa25ca4913de701889e8b6ccc29ab5
         formProfile = RegisterProfileForm(request.POST, request.FILES)
         ctx = {
             'formprofile':formProfile
@@ -44,7 +50,8 @@ class RegisterView(FormView):
             new_profile = formProfile.save(commit=False)
             new_profile.user = new_user
             new_profile.save()
-
+            message = 'Se agrego correctamente'
+            ctx['message']=message
 
             return render(request,self.template_name,ctx)
         else:
@@ -57,6 +64,7 @@ class ProfileView(FormView):
 
     @method_decorator(login_required(login_url='/inicio_de_sesion'))
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         try:
             user_form = UserForm(instance=request.user)
             profile = UserProfile.objects.filter(user=request.user)
@@ -65,6 +73,20 @@ class ProfileView(FormView):
         ctx = {'user_form':user_form,
                'profile':profile}
         return render(request,self.template_name,ctx)
+=======
+      try:
+          user_form = UserForm(instance=request.user)
+          if user_form.is_valid():
+              user = user_form.save(commit=False)
+              user.save()
+      except User.DoesNotExist:
+          raise Http404
+      ctx = {'user_form':user_form}
+      return render(request,self.template_name,ctx)
+
+
+
+>>>>>>> 6a89ede279fa25ca4913de701889e8b6ccc29ab5
 
 
 #---------------------------- Vista para editar usuario -----------------------------------#

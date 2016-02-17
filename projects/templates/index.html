@@ -4,6 +4,25 @@
 {% block content %}
 
     <br>
+{% csrf_token %}
+<table border="0" class="table_projects">
+    <thead>
+        <th>Nombre:</th>
+        <th>Cliente:</th>
+        <th>Plataforma:</th>
+        <th>Ver proyecto:</th>
+</thead>
+<tbody>
+   {% for project in project %}
+    <tr>
+        <td>{{ project.name }}</td>
+        <td>{{ project.client }}</td>
+        <td>{{ project.platform }}</td>
+        <td><a href="/proyecto.{{project.name}}">Ver</a> </td>
+    </tr>
+    {% endfor %}
+</tbody>
+    </table>
 
    {% for project in project %}
     <div class="proyecto">
