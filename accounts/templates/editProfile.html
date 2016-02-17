@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Informacion de Perfil {% endblock %}
+{#------------------------------------------Formulario-----------------------------------------------------#}
+{% block content %}
+  {{ user_form.errors }}
+  {{ user_form.non_fields_errors }}
+  <form action="." method="post" class="profile_form">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <p><input class="button" type="submit" value="Save changes"></p>
+  </form>
+  <a class="a_ver_perfil" href="{% url "user.profile" %}">Volver</a>
+{% endblock %}

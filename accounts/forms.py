@@ -4,11 +4,10 @@ from django import forms
 from accounts.models import UserProfile
 
 
-class RegisterFormUser(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username','first_name','last_name','password','email')
-
 
         user = ['username']
         if User.objects.filter(username=user):
@@ -19,7 +18,7 @@ class RegisterFormUser(forms.ModelForm):
             raise forms.ValidationError('Ya existe un email igual en la db.')
 
 
-class RegisterFormProfile(forms.ModelForm):
+class RegisterProfileForm(forms.ModelForm):
     username = forms.CharField()
     first_name = forms.CharField()
     last_name = forms.CharField()

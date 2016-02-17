@@ -1,21 +1,53 @@
 {% extends 'base.html' %}
-{% block title %}Mi Perfil{% endblock title %}
-{% block content %}
-<div class="row">
-{% csrf_token %}
-    <h1>Este es tu perfil</h1>
-    {% if user.is_authenticated %}
-        <p>primer nombre:</p>
-        <p>{{ model2.user.first_name }}</p>
-        <p>Apellido:</p>
-        <p>{{ model2.last_name }}</p>
-        <p>Correo electorinico:</p>
-        <p>{{ model2.email }}</p>
-        <p></p>
-    {% endif %}
-    <section>
-        <h3><a href="#">editar</a></h3>
-    </section>
-</div>
+{% load staticfiles %}
+{% block title %} Informacion de Perfil {% endblock %}
+{#-----------------------------------------Menu principal-----------------------------------------------#}
 
+{#------------------------------------------Formulario-----------------------------------------------------#}
+{% block content %}
+  <h3 class="title profile">Informacion Basica</h3>
+  <dl>
+    <dt><strong>Usuario:</strong></dt>
+    <dd>{{ user.username }}</dd>
+
+    <dt><strong>Correo Electronico:</strong></dt>
+    <dd>{{ user.email }}</dd>
+
+    {% if user.first_name %}
+      <dt><Strong>Nombre:</Strong></dt>
+      <dd>{{ user.first_name }}</dd>
+    {% endif %}
+
+    {% if user.last_name %}
+      <dt><strong>Apellido:</strong></dt>
+      <dd>{{ user.last_name }}</dd>
+    {% endif %}
+
+    <dt><strong>Descripcion:</strong></dt>
+    <dd>{{ profile.descripcion }}</dd>
+  </dl>
+  <dl>
+    <dt><strong>Miembro desde</strong></dt>
+    <dd>{{ user.date_joined }}</dd>
+
+    <dt><strong>Ultima conexion</strong></dt>
+    <dd>{{ user.last_login }}</dd>
+  </dl>
+   <a class="a_editar_perfil" href="{% url "edit.account" %}">Editar Perfil</a>
 {% endblock %}
+{% block contenido %}
+    Mi perfil
+{% endblock %}
+
+{#<div class="row">#}
+{#{% csrf_token %}#}
+{#    <h1>Este es tu perfil</h1>#}
+{#    {% if user.is_authenticated %}#}
+{#        {{ user_form.errors }}#}
+{#        {{ user_form.non_fields_errors }}#}
+{#    {% endif %}#}
+{#        {{ user_form.as_p }}#}
+{#    <input class="btnAgregar" type="submit" value="Editar Perfil">#}
+{#    <p>{{ message }}</p>#}
+{#</div>#}
+

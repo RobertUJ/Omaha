@@ -1,19 +1,21 @@
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import Http404
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
-from accounts.forms import RegisterFormProfile, RegisterFormUser
+from accounts.forms import RegisterProfileForm, UserForm
 from accounts.models import UserProfile
+
+#----------------------------- Vista para agregar nuevo usuario ---------------------------------#
 
 class RegisterView(FormView):
     template_name = "register.html"
 
-
     def get(self, request, *args, **kwargs):
-        formUser = RegisterFormUser()
-        formProfile = RegisterFormProfile()
+        formUser = UserForm()
+        formProfile = RegisterProfileForm()
         ctx = {
             'formusr': formUser,
             'formprofile':formProfile
@@ -22,7 +24,7 @@ class RegisterView(FormView):
 
     def post(self, request, *args, **kwargs):
         # formUser = RegisterFormUser(request.POST)
-        formProfile = RegisterFormProfile(request.POST, request.FILES)
+        formProfile = RegisterProfileForm(request.POST, request.FILES)
         ctx = {
             'formprofile':formProfile
         }
@@ -48,22 +50,39 @@ class RegisterView(FormView):
         else:
             return render(request,self.template_name,ctx)
 
+#----------------------------- Vista para el perfil de usuario -------------------------------------#
+
 class ProfileView(FormView):
     template_name = "profile.html"
 
     @method_decorator(login_required(login_url='/inicio_de_sesion'))
     def get(self, request, *args, **kwargs):
-        usermodel = UserProfile.objects.all()
-        usermodel2 = User.objects.all()
-        ctx = {
-            'model2':usermodel2,
-            'model':usermodel,
-        }
-        return render(request, self.template_name, ctx)
+        try:
+            user_form = UserForm(instance=request.user)
+            profile = UserProfile.objects.filter(user=request.user)
+        except User.DoesNotExist:
+            raise Http404
+        ctx = {'user_form':user_form,
+               'profile':profile}
+        return render(request,self.template_name,ctx)
+
+
+#---------------------------- Vista para editar usuario -----------------------------------#
+class EditProfileView(FormView):
+    template_name = 'editProfile.html'
+
+    def get(self, request, *args, **kwargs):
+        try:
+            user_form = RegisterProfileForm(instance=request.user)
+        except User.DoesNotExist:
+            raise Http404
+        ctx = {'user_form':user_form}
+        return render(request,self.template_name,ctx)
 
     def post(self, request, *args, **kwargs):
-        usermodel = UserProfile.objects.all()
-        ctx = {
-            'model':usermodel,
-        }
+        try:
+            user_form = RegisterProfileForm(instance=request.user)
+        except User.DoesNotExist:
+            raise Http404
+        ctx = {'user_form':user_form}
         return render(request,self.template_name,ctx)
