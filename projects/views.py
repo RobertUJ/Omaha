@@ -63,7 +63,23 @@ class addProject(View):
                 'form': form,
             }
             if form.is_valid():
-                form.save(commit=True)
+                name = form.cleaned_data["name"]
+                start_date = form.cleaned_data["start_date"]
+                due_date = form.cleaned_data["due_date"]
+                url = form.cleaned_data["url"]
+                domain = form.cleaned_data["domain"]
+                server = form.cleaned_data["server"]
+                client = form.cleaned_data["client"]
+                platform = form.cleaned_data["platform"]
+                users = form.cleaned_data["users"]
+
+                new_element = MainProject.objects.create(user=request.user,name=name,start_date=start_date,due_date=due_date,url=url,
+                                                         domain=domain,server=server,client=client,
+                                                         platform=platform,users=users)
+                new_element.save()
+
+                message = 'Agregado correctamente'
+                data['message']=message
                 return render(request, self.template_name, data)
             else:
                 return render(request, self.template_name, data)

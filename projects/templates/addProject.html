@@ -10,10 +10,32 @@
 <br>
     <form method="POST" action="">
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ form.errors }}
 
+  	<div id="left">
+  		<p>Nombre:</p>
+  		<p>Fecha de inicio:</p>
+        <p>Fecha limite:</p>
+        <p>Url:</p>
+        <p>Dominio:</p>
+        <p>Servidor:</p>
+        <p>Cliente:</p>
+        <p>Plataforma:</p>
+        <p>Users:</p>
+  	</div>
+
+      <div id="right">
+        {% csrf_token %}
+        <p>{{ form.name }}</p>
+        <p>{{ form.start_date }}</p>
+        <p>{{ form.due_date }}</p>
+        <p>{{ form.url }}</p>
+        <p>{{ form.domain }}</p>
+        <p>{{ form.server }}</p>
+        <p>{{ form.client }}</p>
+        <p>{{ form.platform }}</p>
+        <p>{{ form.users }}</p>
+        {{ form.errors }}
+        {{ message }}
 <input class="btnAgregar" type="submit" value="Agregar proyecto">
 </form>
 

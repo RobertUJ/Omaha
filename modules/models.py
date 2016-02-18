@@ -1,10 +1,10 @@
 import datetime
 from django.db import models
+from projects.models import MainProject
 
-# Create your models here.
 
-# Create your models here.
 class Module(models.Model):
+    project = models.ManyToManyField(MainProject)
     name = models.CharField(max_length=50, null=False,default='')
     description = models.TextField(max_length=400, null=True,default='')
     justification = models.TextField(max_length=400, null=True,default='')

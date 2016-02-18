@@ -21,17 +21,13 @@
             {% endif%}
         </div>
          <div class="a_menu">
-            <ul>
-                <li><a href="/index/" >Proyectos</a></li>
-                <li><a href="/modulos/" >Modulos</a></li>
-                <li><a href="/todolist/">Listas</a></li>
-                <li><a href="/tickets/" >Tickets</a></li>
+             <ul>
+                <li><a href="/index/" >Projectos</a></li>
+                {% block menu %}
+                {% endblock %}
                 {% if user.is_authenticated %}
-                    <li><a href="/perfil" >Mi perfil</a></li>
+                    <li><a href="/perfil/" >Mi perfil</a></li>
                 {% endif %}
-                <li><a href="/design/" >Diseno</a></li>
-                <li><a href="/documents/" >Documentos relevantes</a></li>
-                <li><a href="/contact/" >Contacto</a></li>
             </ul>
         </div>
 </section>

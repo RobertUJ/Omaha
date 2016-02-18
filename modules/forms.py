@@ -13,3 +13,6 @@ class addModuleForm(ModelForm):
             'analysis': TextInput(attrs={'placeholder': 'Analisis*'})
         }
         fields = '__all__'
+
+        def __unicode__(self):
+            return "%s" % self.project_name

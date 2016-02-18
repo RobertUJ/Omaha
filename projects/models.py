@@ -1,9 +1,13 @@
+from django.contrib.auth.models import User
 from django.db import models
+from django.http import request
+
 from platforms.models import PlatformsModel
 
 
 class MainProject(models.Model):
     PRIORITY = (('1', 'Para ayer'),('2', 'Urgente'),('3', 'Para hoy'),)
+    user = models.ForeignKey(User, null=True, blank=True)
     name = models.CharField(max_length=100)
     start_date = models.DateField()
     due_date = models.DateField()

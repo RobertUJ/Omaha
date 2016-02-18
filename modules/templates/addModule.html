@@ -11,20 +11,23 @@
 <div id="container">
   <div id="row">
 
-  	<div id="left">
-  		<p>Nombre:</p>
-  		<p>Descripcion:</p>
-        <p>Justificacion:</p>
-        <p>Analisis:</p>
-  	</div>
+{#  	<div id="left">#}
+{#  		<p>Nombre:</p>#}
+{#  		<p>Descripcion:</p>#}
+{#        <p>Justificacion:</p>#}
+{#        <p>Analisis:</p>#}
+{#  	</div>#}
+{##}
+{#      <div id="right">#}
+{#        {% csrf_token %}#}
+{#        <p>{{ form.project }}</p>#}
+{#        <p>{{ form.description }}</p>#}
+{#        <p>{{ form.justification }}</p>#}
+{#        <p>{{ form.analysis }}</p>#}
 
-      <div id="right">
-        {% csrf_token %}
-        <p>{{ form.name }}</p>
-        <p>{{ form.description }}</p>
-        <p>{{ form.justification }}</p>
-        <p>{{ form.analysis }}</p>
-          {{ form.errors }}
+      {% csrf_token %}
+      {{ form.as_p }}
+      {{ form.errors }}
   	</div>
    </div>
 </div>
