@@ -81,7 +81,7 @@ class EditProfileView(FormView):
 
     def post(self, request, *args, **kwargs):
         try:
-            user_form = RegisterProfileForm(instance=request.user)
+            user_form = RegisterProfileForm(request.POST, instance=request.user)
         except User.DoesNotExist:
             raise Http404
         ctx = {'user_form':user_form}

@@ -8,10 +8,10 @@ from platforms.models import PlatformsModel
 class MainProject(models.Model):
     PRIORITY = (('1', 'Para ayer'),('2', 'Urgente'),('3', 'Para hoy'),)
     user = models.ForeignKey(User, null=True, blank=True)
-    name = models.CharField(max_length=100)
-    start_date = models.DateField()
+    name = models.CharField(unique=True, max_length=100)
+    start_date = models.DateField(unique=True, auto_now_add=True)
     due_date = models.DateField()
-    url = models.CharField(max_length=100, null=True, blank=True)
+    url = models.CharField(unique=True, max_length=100, null=True, blank=True)
     domain = models.CharField(max_length=100, null=True, blank=True)
     server = models.CharField(max_length=100, null=True, blank=True)
     client = models.CharField(max_length=100)
