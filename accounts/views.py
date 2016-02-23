@@ -1,8 +1,9 @@
-
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.utils import http
 from django.utils.decorators import method_decorator
 from django.views.generic import FormView
 from accounts.forms import RegisterProfileForm, UserForm
@@ -45,8 +46,12 @@ class RegisterView(FormView):
             new_profile.user = new_user
             new_profile.save()
 
-
-            return render(request,self.template_name,ctx)
+            message = 'se agrego con exito.'
+            ctx['message']=message
+            #return render(request,self.template_name,ctx)
+            # messages
+            messages.add_message(request, messages.INFO, 'Usuario agregado correctamente.')
+            return HttpResponseRedirect('/inicio_de_sesion/')
         else:
             return render(request,self.template_name,ctx)
 

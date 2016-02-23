@@ -1,3 +1,5 @@
+from django import forms
+from django.contrib.admin.widgets import AdminDateWidget
 from django.forms import ModelForm, TextInput
 from django.forms.widgets import EmailInput, NumberInput, URLInput, DateInput
 
@@ -7,16 +9,15 @@ from projects.models import MainProject
 class addProjectForm(ModelForm):
     class Meta:
         model = MainProject
-        widgets = {
-            'name':TextInput(attrs={'placeholder':'Nombre proyecto*', 'class':"inputs_proyect"}),
-            'start_date':DateInput(attrs={'placeholder':'Fecha inicial'}),
-            'end_date':DateInput(attrs={'placeholder':'Fecha final*'}),
-            'url':URLInput(attrs={'placeholder':'URL*'}),
-            'domain':TextInput(attrs={'placeholder':'Dominio*'}),
-            'server_assigned':TextInput(attrs={'placeholder':'Servidor asignado*'}),
-            'type':TextInput(attrs={'placeholder':'Tipo*'}),
-            'client':TextInput(attrs={'placeholder':'Cliente*'}),
-            'users':TextInput(attrs={'placeholder':'usuarios*'})
-        }
+        name = forms.CharField()
+        start_date = forms.DateField(widget=AdminDateWidget)
+        end_date = forms.DateField(widget=AdminDateWidget)
+        url = forms.URLField()
+        domain = forms.IPAddressField()
+        server_assigned = forms.CharField()
+        type = forms.CharField()
+        client = forms.CharField()
+        users = forms.CharField()
+
         fields = '__all__'
 
