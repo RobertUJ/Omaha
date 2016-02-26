@@ -37,16 +37,19 @@ class LoginView(FormView):
             if form.is_valid():
                 username = form.cleaned_data["username"]
                 password = form.cleaned_data["password"]
-                user = authenticate(username=username, password=password)
-                if user is not None:
-                    if user.is_active:
-                        login(request, user)
-                        return HttpResponseRedirect('/index')
-                        print "Te has identificado de modo correcto"
-                    else:
-                        mensaje = "Tu usuario esta inactivo"
+
+                if len(username) == 0 or len(password) == 0:
+                    mensaje = 'El formulario no puede estar vacio!!'
                 else:
-                    mensaje = "Nombre y/o password incorrectos"
+                    user = authenticate(username=username, password=password)
+                    if user is not None:
+                        if user.is_active:
+                            login(request, user)
+                            return HttpResponseRedirect('/index')
+                        else:
+                            mensaje = "Tu usuario esta inactivo"
+                    else:
+                        mensaje = "Nombre y/o password incorrectos"
 
             ctx = {'form':form,'mensaje':mensaje}
             return render(request,self.template_name,ctx)

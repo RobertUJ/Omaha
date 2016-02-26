@@ -64,7 +64,7 @@ class addProject(View):
             }
             if form.is_valid():
                 name = form.cleaned_data["name"]
-                start_date = form.cleaned_data["start_date"]
+                # start_date = form.cleaned_data["start_date"]
                 due_date = form.cleaned_data["due_date"]
                 url = form.cleaned_data["url"]
                 domain = form.cleaned_data["domain"]
@@ -73,7 +73,7 @@ class addProject(View):
                 platform = form.cleaned_data["platform"]
                 users = form.cleaned_data["users"]
 
-                new_element = MainProject.objects.create(user=request.user,name=name,start_date=start_date,due_date=due_date,url=url,
+                new_element = MainProject.objects.create(user=request.user,name=name,due_date=due_date,url=url,
                                                          domain=domain,server=server,client=client,
                                                          platform=platform,users=users)
                 new_element.save()
