@@ -5,45 +5,30 @@
 {#-----------------------------------------Menu principal-----------------------------------------------#}
 <section class="menu_proyectos">
         <a class="a_ver_proyectos" href="{% url "IndexView" %}">Volver a proyectos</a>
-    </section>
+</section>
 {#------------------------------------------Formulario-----------------------------------------------------#}
 <br>
-    <form method="POST" action="">
-
+    <form id="form_project" method="POST" action="">
+    {% csrf_token %}
+    <script src="{% static "js/vendor/jquery-1.11.2.min.js"%}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{% static "js/main.js" %}"></script>
 
   	<div id="left">
-  		<p>Nombre:</p>
-        <p>Fecha limite:</p>
-        <p>Url:</p>
-        <p>Dominio:</p>
-        <p>Servidor:</p>
-        <p>Cliente:</p>
-        <p>Plataforma:</p>
-        <p>Users:</p>
+  		<p>Nombre: <p>{{ form.name }}</p></p>
+        <p>Fecha limite:  <input autocomplete="off" class="form-control hasDatePicker" id="datepicker" name="due_date" type="text">
+        <p>Url: <p>{{ form.url }}</p></p>
+        <p>Dominio: <p>{{ form.domain }}</p></p>
+        <p>Servidor: <p>{{ form.server }}</p></p>
+        <p>Cliente: <p>{{ form.client }}</p></p>
+        <p>Plataforma: <p>{{ form.platform }}</p></p>
+        <p>Users: <p>{{ form.users }}</p></p>
   	</div>
-
-      <div id="right">
-        {% csrf_token %}
-        <p>{{ form.name }}</p>
-        <p>{{ form.due_date }}</p>
-        <p>{{ form.url }}</p>
-        <p>{{ form.domain }}</p>
-        <p>{{ form.server }}</p>
-        <p>{{ form.client }}</p>
-        <p>{{ form.platform }}</p>
-        <p>{{ form.users }}</p>
         {{ form.errors }}
         {{ message }}
-      </div>
-<button id="addproject-btn" class="btnAgregar" type="submit">Agregar proyecto</button>
-{#<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">#}
-{#<script src="http://code.jquery.com/jquery-1.9.1.js"></script>#}
-{#<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>#}
-{#<script>#}
-{#    $(document).ready(function() {#}
-{#    $('.datepicker').datepicker();#}
-{#    });#}
-{#</script>#}
+         <p id="results"></p>
+        <button id="addproject-btn" class="btnAgregar" type="submit">Agregar proyecto</button>
+
 </form>
 
 </body>

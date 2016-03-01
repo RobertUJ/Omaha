@@ -11,15 +11,29 @@ from projects.models import MainProject
 class addProjectForm(ModelForm):
     class Meta:
         model = MainProject
-        name = forms.CharField(label='nombre')
-        # start_date = forms.DateField(widget=AdminDateWidget)
-        end_date = forms.DateField()
-        url = forms.URLField()
-        domain = forms.IPAddressField()
-        server_assigned = forms.CharField()
-        type = forms.CharField()
-        client = forms.CharField()
-        users = forms.CharField()
+        fields = [
+            'name',
+            'due_date',
+            'url',
+            'domain',
+            'server',
+            'client',
+            'platform',
+            'users',
+        ]
 
-        fields = '__all__'
+        widgets = {
+            'name': TextInput(attrs={'placeholder': 'Nombre*', "required":"True"}),
+            'due_date': DateInput(attrs={'placeholder':'Fecha final','class': 'form-control hasDatePicker'}),
+            'url': TextInput(attrs={'placeholder': 'url*', "required":"True"}),
+            'domain': TextInput(attrs={'placeholder':'dominio'}),
+            'server': TextInput(attrs={'placeholder': 'servidor'}),
+            'client': TextInput(attrs={'placeholder': 'cliente'}),
+            'users': TextInput(attrs={'placeholder': 'usuarios'}),
+
+
+        }
+
+
+
 

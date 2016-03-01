@@ -10,11 +10,19 @@
 <!-- *******************************************FORMULARIO ***************************** -->
 <br>
 <form method="POST" action="">
+<script src="{% static "js/vendor/jquery-1.11.2.min.js"%}"></script>
+<script src="{% static "js/main.js" %}"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-
-<input class="btnAgregar" type="submit" value="Agregar lista">
+    <div id="left">
+        {% csrf_token %}
+        <p>Nombre: <p>{{ form.name }}</p></p>
+        <p>Descripcion: </p>
+        <p>{{ form.description }}</p>
+        <p>Fecha limite: <p>{{ form.due_date }}</p></p>
+        {{ form.errors }}
+    </div>
+    <button class="btnAgregar" type="submit">Agregar</button>
 </form>
 
 </body>

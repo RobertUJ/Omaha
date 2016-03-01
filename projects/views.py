@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
@@ -78,9 +79,7 @@ class addProject(View):
                                                          platform=platform,users=users)
                 new_element.save()
 
-                message = 'Agregado correctamente'
-                data['message']=message
-                return render(request, self.template_name, data)
+                return HttpResponseRedirect('/index')
             else:
                 return render(request, self.template_name, data)
 
