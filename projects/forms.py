@@ -24,7 +24,7 @@ class addProjectForm(ModelForm):
 
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Nombre*', "required":"True"}),
-            'due_date': DateInput(attrs={'placeholder':'Fecha final','class': 'form-control hasDatePicker'}),
+            'due_date': DateInput(attrs={'placeholder':'Fecha final','class': 'form-control hasDatePicker',"required":"True"}),
             'url': TextInput(attrs={'placeholder': 'url*', "required":"True"}),
             'domain': TextInput(attrs={'placeholder':'dominio'}),
             'server': TextInput(attrs={'placeholder': 'servidor'}),

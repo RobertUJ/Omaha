@@ -7,13 +7,11 @@ class AddTicketForm(ModelForm):
         model = ticketsModel
         fields = '__all__'
         widgets = {
-            'project':Select(),
             'description':TextInput(attrs={'placeholder':'descripcion'}),
             'user_reporter':TextInput(attrs={'placeholder':'Usuario peticion*'}),
             'user_assigned':TextInput(attrs={'placeholder':'Usuario asignado*'}),
          }
         labels = {
-            'project':'Proyecto',
             'description':'Descripcion',
             'user_reporter':'Usuario peticion',
             'user_assigned':'Usuario asignado',
