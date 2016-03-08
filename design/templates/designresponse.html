@@ -6,18 +6,10 @@
  <br>
 <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
-    <div id="container">
-        <div id="row">
-            <div id="left">
-                <img src="{% static "/media/heart.png" %}" alt="" class="img-responsive"/>
                 {{ form.as_p }}
-            </div>
-            <div id="right">
                 {{ form.errors }}
-            </div>
-        </div>
-    </div>
     <input class="btnAgregar" type="submit" value="Contestar peticion">
+    <p>{{ message }}</p>
 </form>
 
 </body>

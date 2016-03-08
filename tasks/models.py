@@ -4,8 +4,8 @@ from todolist.models import todolistmodel
 
 
 class tasksModel(models.Model):
-    project = models.ManyToManyField(MainProject)
-    todolist = models.ManyToManyField(todolistmodel)
+    project = models.ForeignKey(MainProject, null=True, blank=True)
+    todolist = models.ForeignKey(todolistmodel,null=True, blank=True)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     start_date = models.CharField(max_length=100,null=True, blank=True)

@@ -11,7 +11,6 @@
         <thead>
             <th>Proyecto</th>
             <th>Usuario peticion</th>
-            <th>Peticion</th>
             <th>Plataforma</th>
             <th>Tipo</th>
             <th>Fecha peticion</th>
@@ -22,16 +21,25 @@
         <tr>
             <td>{{ project.name }}</td>
             <td>{{ designs.user_assigner }}</td>
-            <td>{{ designs.assignment }}</td>
             <td>{{ designs.platform }}</td>
             <td>{{ designs.type }}</td>
             <td>{{ designs.asked_date }}</td>
             <td>{{ designs.tentative_date }}</td>
-            <td>{{ designs.comment }}</td>
+            <td>{{ designs.comment  }}</td>
         </tr>
         </tbody>
     </table>
+
+    <br>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+                {{ form.as_p }}
+                {{ form.errors }}
+    <input class="btnAgregar" type="submit" value="Agregar perticion">
+</form>
+    <p>{{ message }}</p>
 </body>
+
 {% endblock%}
 {% block contenido %}
     Diseno

@@ -110,8 +110,9 @@ if LOCAL:
         e
 
 #---------------------------CONFIGURACION DE SERVIDOR DE CORREO---------------------
-EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'ventamovil'
+EMAIL_HOST_PASSWORD = 'recargatodo.2014.$'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'erickhp12@gmail.com'
-EMAIL_HOST_PASSWORD = 'webstar12'
 EMAIL_USE_TLS = True

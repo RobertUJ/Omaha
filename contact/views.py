@@ -23,12 +23,12 @@ class ContactView(View):
     def post(self, request, *args, **kwargs):
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save(commit=False)
+            form.save(commit=True)
 
-        send_mail(request.POST.get('name') +" Omaha ", request.POST.get('comment'),request.POST.get('email'), ['erickhp12@gmail.com'])
+        send_mail(request.POST.get('name') +" Omaha ", request.POST.get('comment'),request.POST.get('email'), ['edgholguin@gmail.com'])
 
         data = {
             'form': form,
             'app_name': settings.APP_NAME
         }
-        return render(request, self.template_name, data)
+        return render(request,  self.template_name, data)

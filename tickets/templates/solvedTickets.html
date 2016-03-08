@@ -3,27 +3,27 @@
 {% block title %} Agregar un proyecto nuevo {% endblock %}
 {% block content %}
 <!-- *******************************************FORMULARIO ***************************** -->
-<h2>Lista de tickets pendientes</h2>
+<h2>Lista de tickets resueltos</h2>
     <br>
 <section class="tickets">
     <section class="tickets_menu">
         <div class="div_agregar_ticket">
             <a class="a_agregar_ticket" href="{% url "AddTicketView" %}">Agregar ticket</a>
-            <a class="a_agregar_ticket" href="{% url "solvedTicketsView" %}">Tickets resueltos</a>
+            <a class="a_agregar_ticket" href="{% url "TicketsView" %}">Tickets pendientes</a>
         </div>
     </section>
 
-    {% for ticket in ticketsPendientes %}
+    {% for ticket in tickets %}
     <section class="tickets_available">
     {% csrf_token %}
         <h3>
             {% for project in ticket.project %}
-                {{ project}}.
-            {% endfor %}
-            </h3>
-        <p><b>Descripcion:</b> {{ ticket.description}}</p>
-        <p><b>Usuario asignado:</b> {{ ticket.user_assigned }}</p>
-        <p><a href="/ticket/{{ticket.id}}">Ver detalles</a></p>
+            {{ project}}.
+    {% endfor %}
+        </h3>
+    <p><b>Descripcion:</b> {{ ticket.description}}</p>
+    <p><b>Usuario asignado:</b> {{ ticket.user_assigned }}</p>
+    <p><a href="/ticket/{{ticket.id}}">Ver detalles</a></p>
     </section>
     {% endfor %}
 </section>

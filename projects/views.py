@@ -18,7 +18,7 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         project = MainProject.objects.order_by('due_date')
         data = {
-            'project': project,
+            'projects': project,
         } 
         return render(request, self.template_name, data)
 

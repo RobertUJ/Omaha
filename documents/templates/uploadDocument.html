@@ -5,12 +5,13 @@
 
 <h1 style="text-align: center">Subir un documento</h1>
 <!-- *******************************************FORMULARIO ***************************** -->
- <form method="post" action="">
+ <form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     {{ form.errors }}
      <br>
     <input type="submit" value="Subir documento">
+ <p>{{ message }}</p>
 </form>
 
 {% endblock%}

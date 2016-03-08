@@ -24,25 +24,36 @@
         </tbody>
     </table>
 
-<h2>Documentos</h2>
     <br>
+<h2>Documentos</h2>
 {% for imgDocumento in imgDocumentos %}
     <div class="documentos">
         <h3>Documentos</h3>
         <figure><a href="{{ MEDIA_URL }}{{ imgDocumento.images }}">
-            <img src="{{ MEDIA_URL }}{{ imgDocumento.images }}" height="100px"alt="Ver"></a></figure>
+            <img src="{{ MEDIA_URL }}{{ imgDocumento.images }}" height="80px"alt="Ver"></a></figure>
     </div>
 {% endfor %}
 
-<h2>Imagenes de diseno</h2>
     <br>
+<h2>Imagenes de diseno</h2>
 {% for imgDiseno in imgDisenos %}
     <div class="imagenes">
         <h3>Diseno</h3>
-        <figure><img src="{{ MEDIA_URL }}{{ imgDiseno.files }}" height="100px"alt="Documentos"></figure>
-        <p><a href="{{ MEDIA_URL }}{{ imgDocumento.images }}">Descargar</a></p>
+        <figure><a href="{{ MEDIA_URL }}{{ imgDiseno.files }}">
+            <img src="{{ MEDIA_URL }}{{ imgDiseno.files }}" height="100px"></a></figure>
     </div>
 {% endfor %}
+
+    <br>
+<h2>Imagenes de tickets</h2>
+{% for imgTicket in imgTickets%}
+    <div class="imagenes">
+        <h3>Tickets</h3>
+        <figure><a href="{{ MEDIA_URL }}{{ imgTicket.files }}">
+            <img src="{{ MEDIA_URL }}{{ imgTicket.files }}" height="100px"alt="Ver"></a></figure>
+    </div>
+{% endfor %}
+
 </section>
 
 {% endblock %}

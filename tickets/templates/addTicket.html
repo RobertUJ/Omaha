@@ -10,15 +10,15 @@
 <!-- *******************************************FORMULARIO ***************************** -->
 <section class="form">
 
-<form method="POST" action="" class="form_add_ticket">
+<form method="POST" action="" class="form_add_ticket" enctype="multipart/form-data">
 
     {% csrf_token %}
     {{ form.as_p }}
     {{ form.errors }}
 
-<input class="btnAgregar" type="submit" value="Agregar proyecto">
+<input class="btnAgregar" type="submit" value="Agregar ticket">
+    <p>{{ message }}</p>
 </form>
-<br>
 </section>
 
 </body>

@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm, TextInput
 from django.forms.widgets import DateInput, Textarea, FileInput
 
-from design.models import DesignModelRequest, DesignModelResponse, DesignMailModel
+from design.models import DesignModelRequest, DesignModelResponse, DesignMailModel, CommentsModel
 
 
 class DesignFormRequest(ModelForm):
@@ -39,10 +39,30 @@ class DesignFormResponse(forms.ModelForm):
             'type',
             'comment',
         ]
+        labels = {
+            'project':'Proyecto',
+            'designer_assigned':'Diseno',
+            'user_assigner':'Usuario asignado',
+            'assignment':'Respuesta',
+            'files':'Archivo',
+            'platform':'Plataforma',
+            'type':'Tipo',
+            'comment':'Comentario',
+        }
 
-from django.forms import ModelForm, TextInput, Textarea
-from contact.models import ContactModel
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = CommentsModel
+        fields = '__all__'
+        widgets = {
+            'comment': Textarea(attrs={'placeholder': 'commentario*'}),
+        }
+        labels = {
+            'comment': 'commentario',
+            'designer_assigned': 'Diseno',
+            'user_assigner': 'Usuario asignado',
+        }
 
 class ContactForm(ModelForm):
     class Meta:

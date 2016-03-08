@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block title %} ver {{ project.name }} {% endblock %}
 {% block content %}
 
 <!-- *******************************************Menu principal ***************************** -->
@@ -110,21 +110,15 @@
 <br>
 {% for imgDocuments in imgDocuments %}
     <div class="documentos">
-        <h3>Omaha</h3>
-        <figure><img src="{{ MEDIA_URL }}{{ imgDocuments.images }}" height="100px"alt="Documentos"></figure>
-        <p><a href="download">Descargar</a></p>
+        <h3>{{ imgDocuments.name }}</h3>
+        <figure><a href="{{ MEDIA_URL }}{{ imgDocuments.images}}">
+            <img src="{{ MEDIA_URL }}{{ imgDocuments.images }}" height="100px"alt=""></a></figure>
+        <a href="{{ MEDIA_URL }}{{ imgDocuments.files }}"> {{ imgDocuments.name }}</a>
     </div>
 {% endfor %}
 
-{% for imgDesign in imgDesigns %}
-    <div class="documentos">
-        <h3>Diseno</h3>
-        <figure><img src="{{ MEDIA_URL }}{{ imgDesign.files }}" height="100px"alt="Documentos"></figure>
-        <p><a href="download">Descargar</a></p>
-    </div>
-{% endfor %}
 {% endblock %}
 
 {% block contenido %}
-    Indice de proyectos
+Proyecto {{ comments.comment }}
 {% endblock %}

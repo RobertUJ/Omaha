@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Agregar un proyecto nuevo {% endblock %}
+{% block content %}
+<!-- *******************************************FORMULARIO ***************************** -->
+    <br>
+<h2>Lista de tickets pendientes</h2>
+<section class="view_tickets">
+    <section class="view_tickets_available">
+        <h3>{{ tickets.project }}</h3>
+        <p><b>Descripcion:</b> {{ tickets.description }}</p>
+        <p><b>Reportado por:</b> {{ tickets.user_reporter }}</p>
+        <p><b>Usuario asignado:</b> {{ tickets.user_assigned }}</p>
+        <p><b>Prioridad:</b> {{ tickets.priority }}</p>
+        <p><b>Status:</b> {{ tickets.status}}</p>
+        <p><figure><a href="{{ MEDIA_URL }}{{ tickets.files }}">
+            <img src="{{ MEDIA_URL }}{{ tickets.files }}" height="250" width="400px" alt="Ver"></a></figure>
+         </p>
+    </section>
+    <br>
+<h2>Bitacora</h2>
+    {% for answer in ticket_answer %}
+        <p>Respuesta: {{ answer.response }}</p>
+    {% endfor %}
+<h2>Contestar ticket</h2>
+<section class="view_tickets">
+    <form method="POST" action="" class="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.errors }}
+        <input class="btnAgregar" type="submit" value="Contestar ticket">
+        <p>{{ message }}</p>
+    </form>
+</section>
+
+{% endblock %}
+{% block contenido %}
+    Tickets
+{% endblock %}

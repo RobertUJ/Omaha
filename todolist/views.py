@@ -51,15 +51,13 @@ class AddTodoListView(View):
 
     def post(self,request,*args,**kwargs):
             form = addTodoListForm(request.POST)
-            projects = MainProject.objects.all()
-            todolists = todolistmodel.objects.all()
             data = {
                 'form': form,
-                'projects': projects,
-                'todolists': todolists,
             }
             if form.is_valid():
                 form.save(commit=True)
+                message = 'Lista agregada con exito'
+                data['message']=message
                 return render(request,self.template_name,data)
             else:
                 return render(request,self.template_name,data)

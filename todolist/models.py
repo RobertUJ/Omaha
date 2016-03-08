@@ -3,7 +3,7 @@ from projects.models import MainProject
 
 
 class todolistmodel(models.Model):
-    project = models.ManyToManyField(MainProject)
+    project = models.ForeignKey(MainProject, blank=True, null=True)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     start_date = models.CharField(max_length=100,null=True, blank=True)
