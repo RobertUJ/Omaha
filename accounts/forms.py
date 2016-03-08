@@ -11,11 +11,13 @@ class UserForm(forms.ModelForm):
 
 
 class RegisterProfileForm(forms.ModelForm):
-    username = forms.CharField()
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'required':'True'})
+    )
     first_name = forms.CharField()
     last_name = forms.CharField()
     password = forms.CharField(
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(attrs={'required':'True'})
     )
     email = forms.EmailField()
 
@@ -35,6 +37,6 @@ class RegisterProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('descripcion','photo',)
+        fields = ('photo',)
 
 

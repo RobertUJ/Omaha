@@ -8,7 +8,7 @@ class addTodoListForm(ModelForm):
         widgets = {
             'name': TextInput(attrs={'placeholder':'Nombre lista*'}),
             'description': Textarea(attrs={'placeholder':'descripcion'}),
-            'due_date': DateInput(attrs={'placeholder':'Fecha final*'}),
+            'due_date': DateInput(attrs={'placeholder':'Fecha final*','class': 'form-control hasDatePicker',"required":"True"}),
          }
         fields = ['name','description','due_date',]
 

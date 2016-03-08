@@ -6,7 +6,6 @@ from django.forms import ModelForm, TextInput
 from django.forms.widgets import EmailInput, NumberInput, URLInput, DateInput
 
 from projects.models import MainProject
-# DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
 class addProjectForm(ModelForm):
     class Meta:

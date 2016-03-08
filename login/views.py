@@ -15,7 +15,6 @@ from django.views.generic import TemplateView, FormView
 
 class LoginView(FormView):
     template_name = "login.html"
-    #form = LoginForm
     mensaje = ""
 
     def get(self, request, *args, **kwargs):
@@ -37,19 +36,15 @@ class LoginView(FormView):
             if form.is_valid():
                 username = form.cleaned_data["username"]
                 password = form.cleaned_data["password"]
-
-                if len(username) == 0 or len(password) == 0:
-                    mensaje = 'El formulario no puede estar vacio!!'
-                else:
-                    user = authenticate(username=username, password=password)
-                    if user is not None:
-                        if user.is_active:
-                            login(request, user)
-                            return HttpResponseRedirect('/index')
-                        else:
-                            mensaje = "Tu usuario esta inactivo"
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        return HttpResponseRedirect('/index')
                     else:
-                        mensaje = "Nombre y/o password incorrectos"
+                        mensaje = "Tu usuario esta inactivo"
+                else:
+                    mensaje = "Nombre y/o password incorrectos"
 
             ctx = {'form':form,'mensaje':mensaje}
             return render(request,self.template_name,ctx)

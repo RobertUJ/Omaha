@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
@@ -60,6 +61,6 @@ class AddTodoListView(View):
             }
             if form.is_valid():
                 form.save(commit=True)
-                return render(request,self.template_name,data)
+                return HttpResponseRedirect('/todolist/')
             else:
                 return render(request,self.template_name,data)

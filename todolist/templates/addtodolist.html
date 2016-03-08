@@ -19,7 +19,7 @@
         <p>Nombre: <p>{{ form.name }}</p></p>
         <p>Descripcion: </p>
         <p>{{ form.description }}</p>
-        <p>Fecha limite: <p>{{ form.due_date }}</p></p>
+        <p>Fecha limite: <input autocomplete="off" class="form-control hasDatePicker" id="datepicker" name="due_date" type="text"></p>
         {{ form.errors }}
     </div>
     <button class="btnAgregar" type="submit">Agregar</button>

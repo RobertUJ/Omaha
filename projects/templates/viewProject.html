@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %} Agregar un proyecto nuevo {% endblock %}
+
+{% block menu %}
+    <li><a href="/index/" >Projectos</a></li>
+    <li><a href="/modulos/">Modulos</a></li>
+    <li><a href="/todolist/" >Listas</a></li>
+    <li><a href="/tickets/" >Tickets</a></li>
+    <li><a href="/design/" >Diseño</a></li>
+    <li><a href="/documents/" >Documentos Relevantes</a></li>
+    <li><a href="/contact/" >Contacto</a></li>
+{% endblock %}
+
 {% block content %}
 
 <!-- *******************************************Menu principal ***************************** -->
 <br>
-        <a href="javascript:window.history.back();">&laquo; Volver a proyectos</a>
     <div>
-        {% block menu %}
-            <li><a href="/modulos/">Modulos</a></li>
-            <li><a href="/todolist/" >Listas</a></li>
-            <li><a href="/tickets/" >Tickets</a></li>
-            <li><a href="/design/" >Diseño</a></li>
-            <li><a href="/documents/" >Documentos Relevantes</a></li>
-            <li><a href="/contact/" >Contacto</a></li>
-        {% endblock %}
+
     </div>
 <h2 style="text-align: center;">{{ project.name }} Detalles</h2>
 
