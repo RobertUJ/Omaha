@@ -40,7 +40,7 @@ class LoginView(FormView):
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        return HttpResponseRedirect('/index')
+                        return HttpResponseRedirect('/index/')
                     else:
                         mensaje = "Tu usuario esta inactivo"
                 else:
@@ -54,4 +54,4 @@ class LogoutView(TemplateView):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.success(request, 'Te has descnectado con exito.')
-        return HttpResponseRedirect('/inicio_de_sesion')
+        return HttpResponseRedirect(reverse('login.view.url'))

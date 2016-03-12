@@ -17,7 +17,7 @@
                 <p>Usuario: {{ user.username }}&nbsp;&nbsp;&nbsp;
                     <a id="label" href="/logout" class="a_regresar_venta" onclick="">Cerrar sesion</a></p>
             {% else %}
-                <p><a href="/inicio_de_sesion/" class="a_regresar_venta">Inicio de sesion</a></p>
+                <p><a href="{% url 'login.view.url' %}" class="a_regresar_venta">Inicio de sesion</a></p>
             {% endif%}
         </div>
          <div class="a_menu">

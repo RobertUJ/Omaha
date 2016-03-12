@@ -139,7 +139,17 @@
 {% endfor %}
     <div class="comment">
     <h1>Comentarios</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for comment in comments %}
+            <h3>Comentario</h3>
+            <p>Autor: <p>{{ comment.author }}</p></p>
+            <p>Titulo: <p>{{ comment.title}}</p></p>
+            <p>Contenido: <p>{{ comment.body}}</p></p>
+        {% endfor %}
         {{ commentsForm.as_p }}
+    <input class="addComment" type="submit" value="Agregar comentario"/>
+    </form>
     </div>
 {% endblock %}
 

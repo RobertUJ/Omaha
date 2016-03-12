@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm, TextInput, Form
 from django.forms.widgets import DateInput
 
-from feeds.models import Comment
+from feeds.models import CommentModel
 from projects.models import MainProject
 
 class addProjectForm(forms.ModelForm):
@@ -33,7 +33,7 @@ class addProjectForm(forms.ModelForm):
 
 class addCommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = CommentModel
         fields = [
             'title',
             'body',
