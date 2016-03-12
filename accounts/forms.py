@@ -28,11 +28,12 @@ class RegisterProfileForm(forms.ModelForm):
             raise forms.ValidationError('Nombre de usuario ya registrado.')
         return username
 
+
     def clean_email(self):
         """Comprueba que no exista un email igual en la db"""
         email = self.cleaned_data['email']
         if User.objects.filter(email=email):
-            raise forms.ValidationError('Ya existe un email igual en la db.')
+            raise forms.ValidationError('Ya existe un email igual registrado.')
         return email
 
     class Meta:

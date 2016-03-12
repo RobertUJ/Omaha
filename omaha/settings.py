@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'documents',
     'platforms',
     'contact',
+    'feeds',
 )
 
 MIDDLEWARE_CLASSES = (

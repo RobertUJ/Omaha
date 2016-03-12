@@ -6,11 +6,13 @@ from django.views.generic.base import View
 
 from design.models import DesignModelRequest, DesignModelResponse
 from documents.models import documentsModel
-from projects.forms import addProjectForm
+from projects.forms import addProjectForm, addCommentForm
 from projects.models import MainProject
 from tickets.models import ticketsModel
 from todolist.models import todolistmodel
 
+
+# -------------------------Menu principal(vista de proyectos)-----------------------
 
 class IndexView(View):
     template_name = "index.html"
@@ -23,6 +25,7 @@ class IndexView(View):
         } 
         return render(request, self.template_name, data)
 
+# --------------------Ver proyecto(detalles)-------------------------
 
 class viewProject(View):
     template_name = "viewProject.html"
@@ -36,7 +39,9 @@ class viewProject(View):
         designRequests = DesignModelRequest.objects.filter(project=project)
         imgDocuments = documentsModel.objects.filter(project=project)
         imgDesign = DesignModelResponse.objects.filter(project=project)
+        # print "dlskjdlkjadkjlask djlakjsdlkajsdklja lkjsdlka jsdklajs"
 
+        commentForm = addCommentForm()
         data = {
              'todolist': todolist,
              'tickets': tickets,
@@ -44,9 +49,33 @@ class viewProject(View):
              'designRequests': designRequests,
              'imgDesign': imgDesign,
              'imgDocuments': imgDocuments,
+             'commentsForm':commentForm,
         }
         return render(request, self.template_name, data)
 
+# ----------------------Agregar comentario-------------------------
+
+    def post(self, request, *args, **kwargs):
+        commentForm = addCommentForm(request.POST, request.FILES)
+        ctx = {
+            'commentsForm':commentForm
+        }
+        if commentForm.is_valid():
+            username = commentForm.cleaned_data["title"]
+            password = commentForm.cleaned_data["body"]
+
+            new_user = Comment.objects.create_user(username, email, password)
+
+            new_user.last_name = last_name
+            new_user.first_name = first_name
+            new_user.save()
+
+            new_profile = formProfile.save(commit=False)
+            new_profile.user = new_user
+            new_profile.save()
+            print "ok es valido y esta bien "
+
+# -----------------------Agregar proyecto---------------------
 
 class addProject(View):
     template_name = "addProject.html"

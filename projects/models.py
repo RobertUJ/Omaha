@@ -2,7 +2,10 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.http import request
 
+# import feeds
+# from feeds.models import Entrada
 from platforms.models import PlatformsModel
+
 
 
 class MainProject(models.Model):
@@ -17,6 +20,7 @@ class MainProject(models.Model):
     client = models.CharField(max_length=100)
     platform = models.CharField(max_length=100, choices=PlatformsModel.PLATFORMS)
     users = models.CharField(max_length=100, null=True, blank=True)
+    # comment = models.ForeignKey(Entrada, related_name="entradas_blog")
 
     def __unicode__(self):
         return "%s" % self.name

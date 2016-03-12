@@ -1,13 +1,11 @@
-from functools import partial
-
 from django import forms
-from django.contrib.admin.widgets import AdminDateWidget
-from django.forms import ModelForm, TextInput
-from django.forms.widgets import EmailInput, NumberInput, URLInput, DateInput
+from django.forms import ModelForm, TextInput, Form
+from django.forms.widgets import DateInput
 
+from feeds.models import Comment
 from projects.models import MainProject
 
-class addProjectForm(ModelForm):
+class addProjectForm(forms.ModelForm):
     class Meta:
         model = MainProject
         fields = [
@@ -33,6 +31,17 @@ class addProjectForm(ModelForm):
 
         }
 
+class addCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'title',
+            'body',
+        ]
 
+        widgets = {
+            'title': TextInput(attrs={"required":"True"}),
+            'body': TextInput(attrs={'placeholder':'Comentario',"required":"True"}),
+        }
 
 
